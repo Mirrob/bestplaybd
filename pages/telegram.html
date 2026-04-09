@@ -4,25 +4,85 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Join Telegram | BestPlayBD</title>
+  <meta name="description" content="Build a Telegram update page for BestPlayBD with channel positioning, update ideas, and a clean MCW-themed layout." />
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="container nav-wrap">
       <a href="../index.html" class="logo">BestPlayBD</a>
-      <nav class="nav show">
-        <a href="../index.html">Home</a>
+      <div class="top-actions">
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang="bn">বাংলা</button>
+          <button class="lang-btn" data-lang="en">English</button>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+      </div>
+      <nav class="nav" id="mainNav">
+        <a href="../index.html" data-bn="হোম" data-en="Home">হোম</a>
+        <a href="review.html" data-bn="MCW রিভিউ" data-en="MCW Review">MCW রিভিউ</a>
+        <a href="promos.html" data-bn="প্রমোশন" data-en="Promotions">প্রমোশন</a>
+        <a href="deposit-withdraw.html" data-bn="ডিপোজিট ও উইথড্র" data-en="Deposit & Withdraw">ডিপোজিট ও উইথড্র</a>
+        <a href="games.html" data-bn="গেমস" data-en="Games">গেমস</a>
+        <a href="telegram.html" class="nav-btn" data-bn="টেলিগ্রাম জয়েন" data-en="Join Telegram">টেলিগ্রাম জয়েন</a>
       </nav>
     </div>
   </header>
 
+  <section class="page-hero">
+    <div class="container page-grid">
+      <div>
+        <span class="page-badge" data-bn="টেলিগ্রাম পেজ" data-en="Telegram Page">টেলিগ্রাম পেজ</span>
+        <h1 data-bn="Telegram Update Channel" data-en="Telegram Update Channel">Telegram Update Channel</h1>
+        <p data-bn="প্রমোশন, দ্রুত নোটিস, নতুন অফার এবং জরুরি আপডেটের জন্য টেলিগ্রাম সেকশনটি খুবই গুরুত্বপূর্ণ। এই পেজে আপনি সেই অংশটিকে সুন্দরভাবে সাজাতে পারবেন।" data-en="The Telegram section is very important for promotions, fast notices, new offers, and urgent updates. This page gives you a clean structure for it.">প্রমোশন, দ্রুত নোটিস, নতুন অফার এবং জরুরি আপডেটের জন্য টেলিগ্রাম সেকশনটি খুবই গুরুত্বপূর্ণ। এই পেজে আপনি সেই অংশটিকে সুন্দরভাবে সাজাতে পারবেন।</p>
+      </div>
+      <div class="page-side-card feature-panel">
+        <h3 data-bn="কেন দরকার" data-en="Why It Matters">কেন দরকার</h3>
+        <ul>
+          <li data-bn="দ্রুত আপডেট পৌঁছায়" data-en="Fast updates reach users">দ্রুত আপডেট পৌঁছায়</li>
+          <li data-bn="নতুন প্রমো শেয়ার করা সহজ" data-en="Easy to share new promos">নতুন প্রমো শেয়ার করা সহজ</li>
+          <li data-bn="রিমাইন্ডার ও ছোট নোটিস দেওয়া যায়" data-en="Good for reminders and short notices">রিমাইন্ডার ও ছোট নোটিস দেওয়া যায়</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <main class="section">
-    <div class="container">
-      <div class="card">
-        <h1>Join Telegram</h1>
-        <p>This page is under construction. Content will be added step by step.</p>
+    <div class="container channel-box">
+      <div class="telegram-card content-shell">
+        <h2 data-bn="চ্যানেল পজিশনিং" data-en="Channel Positioning">চ্যানেল পজিশনিং</h2>
+        <p data-bn="চ্যানেলের টোন খুব বেশি জটিল না রেখে সংক্ষিপ্ত, দ্রুত ও অফার-কেন্দ্রিক রাখা ভালো। ব্যবহারকারীরা যেন সঙ্গে সঙ্গে বুঝতে পারে এটি আপডেট পাওয়ার জায়গা।" data-en="Keep the tone short, fast, and offer-focused rather than overly complex. Users should understand immediately that this is where they get updates.">চ্যানেলের টোন খুব বেশি জটিল না রেখে সংক্ষিপ্ত, দ্রুত ও অফার-কেন্দ্রিক রাখা ভালো। ব্যবহারকারীরা যেন সঙ্গে সঙ্গে বুঝতে পারে এটি আপডেট পাওয়ার জায়গা।</p>
+        <div class="note-box" data-bn="এখানে পরে আপনার আসল টেলিগ্রাম চ্যানেল লিংক বসিয়ে দিন।" data-en="Replace this area with your real Telegram channel link later.">এখানে পরে আপনার আসল টেলিগ্রাম চ্যানেল লিংক বসিয়ে দিন।</div>
+        <div class="hero-actions" style="margin-top:20px;">
+          <a href="#" class="btn btn-primary" data-bn="চ্যানেল লিংক বসান" data-en="Add Channel Link">চ্যানেল লিংক বসান</a>
+        </div>
+      </div>
+      <div class="telegram-card content-shell">
+        <h2 data-bn="কি ধরনের পোস্ট দিতে পারেন" data-en="What You Can Post">কি ধরনের পোস্ট দিতে পারেন</h2>
+        <div class="link-list">
+          <div class="link-pill"><strong data-bn="দৈনিক অফার" data-en="Daily Offers">দৈনিক অফার</strong><span data-bn="ছোট, দ্রুত, CTA-সহ" data-en="Short, quick, CTA-based">ছোট, দ্রুত, CTA-সহ</span></div>
+          <div class="link-pill"><strong data-bn="নতুন প্রমো আপডেট" data-en="New Promo Updates">নতুন প্রমো আপডেট</strong><span data-bn="ব্যানার + ১ লাইনের ব্যাখ্যা" data-en="Banner + 1-line explanation">ব্যানার + ১ লাইনের ব্যাখ্যা</span></div>
+          <div class="link-pill"><strong data-bn="রিমাইন্ডার" data-en="Reminders">রিমাইন্ডার</strong><span data-bn="আজ শেষ / সীমিত সময়" data-en="Ends today / limited time">আজ শেষ / সীমিত সময়</span></div>
+          <div class="link-pill"><strong data-bn="গাইড পোস্ট" data-en="Guide Posts">গাইড পোস্ট</strong><span data-bn="ডিপোজিট, গেম, FAQ" data-en="Deposit, games, FAQ">ডিপোজিট, গেম, FAQ</span></div>
+        </div>
       </div>
     </div>
   </main>
+
+  <section class="section alt-section">
+    <div class="container faq-list">
+      <div class="faq-item">
+        <h3 data-bn="টেলিগ্রাম কি শুধুই প্রমোর জন্য?" data-en="Is Telegram only for promotions?">টেলিগ্রাম কি শুধুই প্রমোর জন্য?</h3>
+        <p data-bn="না, এটি দ্রুত আপডেট, রিমাইন্ডার, নতুন গাইড শেয়ার এবং ছোট সহায়তা বার্তার জন্যও খুব কার্যকর।" data-en="No. It is also useful for fast updates, reminders, guide sharing, and short support-style messages.">না, এটি দ্রুত আপডেট, রিমাইন্ডার, নতুন গাইড শেয়ার এবং ছোট সহায়তা বার্তার জন্যও খুব কার্যকর।</p>
+      </div>
+      <div class="faq-item">
+        <h3 data-bn="চ্যানেল না গ্রুপ?" data-en="Channel or Group?">চ্যানেল না গ্রুপ?</h3>
+        <p data-bn="শুরুর জন্য চ্যানেল অনেক বেশি পরিষ্কার থাকে। পরে প্রয়োজনে আলাদা সাপোর্ট গ্রুপ যোগ করা যায়।" data-en="A channel is much cleaner for starting. Later you can add a separate support group if needed.">শুরুর জন্য চ্যানেল অনেক বেশি পরিষ্কার থাকে। পরে প্রয়োজনে আলাদা সাপোর্ট গ্রুপ যোগ করা যায়।</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer"><div class="container footer-wrap"><p>© 2026 BestPlayBD. All rights reserved.</p><p class="footer-note" data-bn="MCW সম্পর্কিত গাইড, আপডেট ও তথ্যভিত্তিক প্ল্যাটফর্ম।" data-en="Guide-style platform for MCW updates, bonuses and helpful information.">MCW সম্পর্কিত গাইড, আপডেট ও তথ্যভিত্তিক প্ল্যাটফর্ম।</p></div></footer>
+  <script src="../app.js"></script>
 </body>
 </html>

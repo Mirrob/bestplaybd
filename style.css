@@ -312,3 +312,10 @@ img { max-width: 100%; display: block; }
   .mini-stat { width: 100%; }
   .promo-strip-inner { gap: 10px 14px; }
 }
+
+
+.small-btn {
+  min-height: 42px;
+  padding: 0 16px;
+  font-size: 0.95rem;
+}

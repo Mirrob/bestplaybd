@@ -314,8 +314,98 @@ img { max-width: 100%; display: block; }
 }
 
 
-.small-btn {
-  min-height: 42px;
-  padding: 0 16px;
-  font-size: 0.95rem;
+/* Promo sync blocks */
+.promo-hero-actions,
+.promo-card-actions,
+.detail-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.promo-sync-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.dynamic-promo-card {
+  overflow: hidden;
+  padding: 0;
+}
+
+.dynamic-promo-card .promo-banner {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  object-fit: cover;
+}
+
+.dynamic-promo-card .promo-body {
+  padding: 22px;
+}
+
+.promo-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.promo-updated {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.promo-summary {
+  color: var(--muted);
+}
+
+.page-banner-shell {
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: var(--shadow);
+  background: rgba(255,255,255,0.02);
+}
+
+.page-banner-shell img {
+  width: 100%;
+  aspect-ratio: 16 / 8;
+  object-fit: cover;
+}
+
+.detail-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+}
+
+.detail-stack {
+  display: grid;
+  gap: 24px;
+}
+
+.info-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.info-list .link-pill {
+  background: rgba(255,255,255,0.025);
+}
+
+.empty-state {
+  padding: 28px;
+  text-align: center;
+}
+
+@media (max-width: 1080px) {
+  .promo-sync-grid,
+  .detail-layout {
+    grid-template-columns: 1fr;
+  }
 }

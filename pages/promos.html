@@ -4,25 +4,97 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Promotions | BestPlayBD</title>
+  <meta name="description" content="Explore popular MCW-style promotion categories, welcome offers, reload offers, and update-focused promo content for Bangladesh users." />
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="container nav-wrap">
       <a href="../index.html" class="logo">BestPlayBD</a>
-      <nav class="nav show">
-        <a href="../index.html">Home</a>
+      <div class="top-actions">
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang="bn">বাংলা</button>
+          <button class="lang-btn" data-lang="en">English</button>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+      </div>
+      <nav class="nav" id="mainNav">
+        <a href="../index.html" data-bn="হোম" data-en="Home">হোম</a>
+        <a href="review.html" data-bn="MCW রিভিউ" data-en="MCW Review">MCW রিভিউ</a>
+        <a href="promos.html" data-bn="প্রমোশন" data-en="Promotions">প্রমোশন</a>
+        <a href="deposit-withdraw.html" data-bn="ডিপোজিট ও উইথড্র" data-en="Deposit & Withdraw">ডিপোজিট ও উইথড্র</a>
+        <a href="games.html" data-bn="গেমস" data-en="Games">গেমস</a>
+        <a href="telegram.html" class="nav-btn" data-bn="টেলিগ্রাম জয়েন" data-en="Join Telegram">টেলিগ্রাম জয়েন</a>
       </nav>
     </div>
   </header>
 
-  <main class="section">
-    <div class="container">
-      <div class="card">
-        <h1>Promotions</h1>
-        <p>This page is under construction. Content will be added step by step.</p>
+  <section class="page-hero">
+    <div class="container page-grid">
+      <div>
+        <span class="page-badge" data-bn="প্রমোশন পেজ" data-en="Promotions Page">প্রমোশন পেজ</span>
+        <h1 data-bn="MCW Promotion Guide" data-en="MCW Promotion Guide">MCW Promotion Guide</h1>
+        <p data-bn="এই পেজে আমরা এমনভাবে প্রমোশন সাজিয়েছি যাতে ব্যবহারকারীরা সহজে বুঝতে পারে কোন ধরনের অফার কী কাজে আসে এবং কোন সেকশন আগে দেখা উচিত।" data-en="This page organizes promotion categories in a clear way so users can understand what each offer type is for and which section to check first.">এই পেজে আমরা এমনভাবে প্রমোশন সাজিয়েছি যাতে ব্যবহারকারীরা সহজে বুঝতে পারে কোন ধরনের অফার কী কাজে আসে এবং কোন সেকশন আগে দেখা উচিত।</p>
+      </div>
+      <div class="page-side-card feature-panel">
+        <h3 data-bn="Promo Focus" data-en="Promo Focus">Promo Focus</h3>
+        <ul>
+          <li data-bn="Welcome offer" data-en="Welcome offer">Welcome offer</li>
+          <li data-bn="Reload / daily bonus" data-en="Reload / daily bonus">Reload / daily bonus</li>
+          <li data-bn="Special campaign" data-en="Special campaign">Special campaign</li>
+          <li data-bn="Referral / VIP type offer" data-en="Referral / VIP type offer">Referral / VIP type offer</li>
+        </ul>
       </div>
     </div>
+  </section>
+
+  <main class="section">
+    <div class="container promo-list">
+      <article class="promo-card card">
+        <span class="promo-tag" data-bn="জনপ্রিয়" data-en="Popular">জনপ্রিয়</span>
+        <h3 data-bn="Welcome Bonus" data-en="Welcome Bonus">Welcome Bonus</h3>
+        <p data-bn="নতুন ব্যবহারকারীদের আকর্ষণের জন্য সবচেয়ে শক্তিশালী সেকশনগুলোর একটি। সাধারণত সাইন আপের পর প্রথম ধাপে এই ধরনের অফারই সবচেয়ে বেশি চোখে পড়ে।" data-en="One of the strongest sections for attracting new users. This is usually the first type of offer users notice after sign-up.">নতুন ব্যবহারকারীদের আকর্ষণের জন্য সবচেয়ে শক্তিশালী সেকশনগুলোর একটি। সাধারণত সাইন আপের পর প্রথম ধাপে এই ধরনের অফারই সবচেয়ে বেশি চোখে পড়ে।</p>
+      </article>
+      <article class="promo-card card">
+        <span class="promo-tag" data-bn="দৈনিক" data-en="Daily">দৈনিক</span>
+        <h3 data-bn="Reload / Daily Bonus" data-en="Reload / Daily Bonus">Reload / Daily Bonus</h3>
+        <p data-bn="যারা নিয়মিত আপডেট দেখে, তাদের জন্য এই ধরনের প্রমো অনেক বেশি কার্যকর। টেলিগ্রাম আপডেটের সঙ্গে ভালোভাবে যায়।" data-en="This type of promo works well for users who follow regular updates and pairs well with Telegram update content.">যারা নিয়মিত আপডেট দেখে, তাদের জন্য এই ধরনের প্রমো অনেক বেশি কার্যকর। টেলিগ্রাম আপডেটের সঙ্গে ভালোভাবে যায়।</p>
+      </article>
+      <article class="promo-card card">
+        <span class="promo-tag" data-bn="ক্যাম্পেইন" data-en="Campaign">ক্যাম্পেইন</span>
+        <h3 data-bn="Special Event Promotion" data-en="Special Event Promotion">Special Event Promotion</h3>
+        <p data-bn="IPL, বিশেষ মৌসুম, সীমিত সময়ের অফার বা বড় ব্যানার-ভিত্তিক ক্যাম্পেইন এই সেকশনে রাখা যায়।" data-en="IPL, seasonal offers, limited-time deals, or banner-heavy campaigns fit into this section.">IPL, বিশেষ মৌসুম, সীমিত সময়ের অফার বা বড় ব্যানার-ভিত্তিক ক্যাম্পেইন এই সেকশনে রাখা যায়।</p>
+      </article>
+      <article class="promo-card card">
+        <span class="promo-tag" data-bn="এক্সট্রা" data-en="Extra">এক্সট্রা</span>
+        <h3 data-bn="Referral / VIP Style Offer" data-en="Referral / VIP Style Offer">Referral / VIP Style Offer</h3>
+        <p data-bn="দীর্ঘমেয়াদি ব্যবহারকারী, বন্ধু রেফার, বা বিশেষ রিওয়ার্ড টাইপ অফারগুলো এই ক্যাটাগরিতে রাখা ভালো।" data-en="Longer-term user rewards, refer-a-friend ideas, or more exclusive reward-style offers work well here.">দীর্ঘমেয়াদি ব্যবহারকারী, বন্ধু রেফার, বা বিশেষ রিওয়ার্ড টাইপ অফারগুলো এই ক্যাটাগরিতে রাখা ভালো।</p>
+      </article>
+    </div>
   </main>
+
+  <section class="section alt-section">
+    <div class="container content-shell">
+      <h2 data-bn="প্রমো পেজ কিভাবে ব্যবহার করবেন" data-en="How to Use This Promo Page">প্রমো পেজ কিভাবে ব্যবহার করবেন</h2>
+      <div class="steps-list">
+        <div class="step-item card"><span class="step-number">1</span><strong data-bn="প্রথমে অফারের ধরন দেখুন" data-en="Check the offer type first">প্রথমে অফারের ধরন দেখুন</strong><p data-bn="কোন অফার নতুন ব্যবহারকারীর জন্য, কোনটি নিয়মিত আপডেটের জন্য — আগে সেটা বুঝুন।" data-en="Understand whether the offer is meant for new users or regular update followers first.">কোন অফার নতুন ব্যবহারকারীর জন্য, কোনটি নিয়মিত আপডেটের জন্য — আগে সেটা বুঝুন।</p></div>
+        <div class="step-item card"><span class="step-number">2</span><strong data-bn="তারপর প্রমো ডিটেইল পড়ুন" data-en="Then read the promo details">তারপর প্রমো ডিটেইল পড়ুন</strong><p data-bn="সংক্ষিপ্ত শিরোনাম দেখে সিদ্ধান্ত না নিয়ে, ক্যাটাগরি ও শর্ত আলাদা করে উল্লেখ করুন।" data-en="Do not judge from the short title alone. Mention the category and conditions separately.">সংক্ষিপ্ত শিরোনাম দেখে সিদ্ধান্ত না নিয়ে, ক্যাটাগরি ও শর্ত আলাদা করে উল্লেখ করুন।</p></div>
+        <div class="step-item card"><span class="step-number">3</span><strong data-bn="টেলিগ্রাম আপডেট ফলো করুন" data-en="Follow Telegram updates">টেলিগ্রাম আপডেট ফলো করুন</strong><p data-bn="নিয়মিত আপডেট দেখলে নতুন ক্যাম্পেইন বা সাময়িক অফার মিস হওয়ার সম্ভাবনা কমে।" data-en="Following regular updates helps reduce the chance of missing new campaigns or limited-time offers.">নিয়মিত আপডেট দেখলে নতুন ক্যাম্পেইন বা সাময়িক অফার মিস হওয়ার সম্ভাবনা কমে।</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-section">
+    <div class="container cta-box">
+      <div>
+        <h2 data-bn="প্রমো আপডেট রাখতে চান?" data-en="Want Promo Updates?">প্রমো আপডেট রাখতে চান?</h2>
+        <p data-bn="টেলিগ্রাম পেজে আপনার অফার-ফোকাসড আপডেট, রিমাইন্ডার ও সেকশনভিত্তিক নোট রাখা যেতে পারে।" data-en="Your Telegram page can hold offer-focused updates, reminders, and section-based notes for users.">টেলিগ্রাম পেজে আপনার অফার-ফোকাসড আপডেট, রিমাইন্ডার ও সেকশনভিত্তিক নোট রাখা যেতে পারে।</p>
+      </div>
+      <a href="telegram.html" class="btn btn-primary" data-bn="টেলিগ্রাম খুলুন" data-en="Open Telegram Page">টেলিগ্রাম খুলুন</a>
+    </div>
+  </section>
+
+  <footer class="site-footer"><div class="container footer-wrap"><p>© 2026 BestPlayBD. All rights reserved.</p><p class="footer-note" data-bn="MCW সম্পর্কিত গাইড, আপডেট ও তথ্যভিত্তিক প্ল্যাটফর্ম।" data-en="Guide-style platform for MCW updates, bonuses and helpful information.">MCW সম্পর্কিত গাইড, আপডেট ও তথ্যভিত্তিক প্ল্যাটফর্ম।</p></div></footer>
+  <script src="../app.js"></script>
 </body>
 </html>

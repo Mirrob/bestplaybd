@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BestPlayBD | MCW Bonus, Review & Guide</title>
-  <meta name="description" content="BestPlayBD brings MCW bonus updates, promo guides, deposit and withdrawal help, and useful gaming information for Bangladesh players." />
+  <meta name="description" content="BestPlayBD provides MCW bonus updates, promotion guides, deposit and withdrawal help, and useful gaming information for Bangladesh users." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -12,77 +12,173 @@
     <div class="container nav-wrap">
       <a href="index.html" class="logo">BestPlayBD</a>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
-        ☰
-      </button>
+      <div class="top-actions">
+        <div class="lang-switch" id="langSwitch">
+          <button class="lang-btn active" data-lang="bn">বাংলা</button>
+          <button class="lang-btn" data-lang="en">English</button>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+      </div>
 
       <nav class="nav" id="mainNav">
-        <a href="index.html">Home</a>
-        <a href="pages/review.html">MCW Review</a>
-        <a href="pages/promos.html">Promotions</a>
-        <a href="pages/deposit-withdraw.html">Deposit & Withdraw</a>
-        <a href="pages/games.html">Games</a>
-        <a href="pages/telegram.html" class="nav-btn">Join Telegram</a>
+        <a href="index.html" data-bn="হোম" data-en="Home">হোম</a>
+        <a href="pages/review.html" data-bn="MCW রিভিউ" data-en="MCW Review">MCW রিভিউ</a>
+        <a href="pages/promos.html" data-bn="প্রমোশন" data-en="Promotions">প্রমোশন</a>
+        <a href="pages/deposit-withdraw.html" data-bn="ডিপোজিট ও উইথড্র" data-en="Deposit & Withdraw">ডিপোজিট ও উইথড্র</a>
+        <a href="pages/games.html" data-bn="গেমস" data-en="Games">গেমস</a>
+        <a href="pages/telegram.html" class="nav-btn" data-bn="টেলিগ্রাম জয়েন" data-en="Join Telegram">টেলিগ্রাম জয়েন</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero hero-home">
+      <div class="hero-overlay"></div>
       <div class="container hero-grid">
         <div class="hero-text">
-          <span class="eyebrow">বাংলাদেশের জন্য গাইড, বোনাস ও প্রমো আপডেট</span>
-          <h1>MCW Bonus, Review & Helpful Guide — BestPlayBD</h1>
-          <p>
-            BestPlayBD এ আপনি পাবেন MCW সম্পর্কিত বোনাস আপডেট, প্রমোশন গাইড,
-            ডিপোজিট ও উইথড্র সহায়তা, এবং নতুন ব্যবহারকারীদের জন্য দরকারি তথ্য।
+          <span
+            class="eyebrow"
+            data-bn="বাংলাদেশের জন্য বোনাস, গাইড ও প্রমো আপডেট"
+            data-en="Bonus, guides and promo updates for Bangladesh"
+          >
+            বাংলাদেশের জন্য বোনাস, গাইড ও প্রমো আপডেট
+          </span>
+
+          <h1
+            data-bn="MCW Bonus, Review & Helpful Guide — BestPlayBD"
+            data-en="MCW Bonus, Review & Helpful Guide — BestPlayBD"
+          >
+            MCW Bonus, Review & Helpful Guide — BestPlayBD
+          </h1>
+
+          <p
+            data-bn="BestPlayBD এ আপনি পাবেন MCW সম্পর্কিত বোনাস আপডেট, প্রমোশন গাইড, ডিপোজিট ও উইথড্র সহায়তা, এবং নতুন ব্যবহারকারীদের জন্য দরকারি তথ্য।"
+            data-en="BestPlayBD brings MCW bonus updates, promotion guides, deposit and withdrawal help, and useful information for new users."
+          >
+            BestPlayBD এ আপনি পাবেন MCW সম্পর্কিত বোনাস আপডেট, প্রমোশন গাইড, ডিপোজিট ও উইথড্র সহায়তা, এবং নতুন ব্যবহারকারীদের জন্য দরকারি তথ্য।
           </p>
 
           <div class="hero-actions">
-            <a href="pages/promos.html" class="btn btn-primary">See Promotions</a>
-            <a href="pages/review.html" class="btn btn-secondary">Read MCW Review</a>
+            <a
+              href="pages/promos.html"
+              class="btn btn-primary"
+              data-bn="প্রমোশন দেখুন"
+              data-en="See Promotions"
+            >
+              প্রমোশন দেখুন
+            </a>
+            <a
+              href="pages/review.html"
+              class="btn btn-secondary"
+              data-bn="MCW রিভিউ পড়ুন"
+              data-en="Read MCW Review"
+            >
+              MCW রিভিউ পড়ুন
+            </a>
+          </div>
+
+          <div class="hero-mini-stats">
+            <div class="mini-stat">
+              <strong data-bn="বোনাস" data-en="Bonus">বোনাস</strong>
+              <span data-bn="চলমান অফার আপডেট" data-en="Active offer updates">চলমান অফার আপডেট</span>
+            </div>
+            <div class="mini-stat">
+              <strong data-bn="গাইড" data-en="Guide">গাইড</strong>
+              <span data-bn="শুরু থেকে সহায়তা" data-en="Step-by-step help">শুরু থেকে সহায়তা</span>
+            </div>
+            <div class="mini-stat">
+              <strong data-bn="আপডেট" data-en="Updates">আপডেট</strong>
+              <span data-bn="টেলিগ্রামে দ্রুত নোটিস" data-en="Fast Telegram notices">টেলিগ্রামে দ্রুত নোটিস</span>
+            </div>
           </div>
         </div>
 
-        <div class="hero-card">
-          <div class="card badge-card">
-            <p class="mini-label">Featured Focus</p>
-            <h3>MCW Bangladesh Starter Hub</h3>
-            <ul>
-              <li>Latest bonus updates</li>
-              <li>Beginner-friendly guide</li>
-              <li>Deposit & withdrawal info</li>
-              <li>Telegram update channel</li>
+        <div class="hero-side">
+          <div class="feature-panel">
+            <div class="feature-top">
+              <span class="feature-badge" data-bn="ফিচার্ড" data-en="Featured">ফিচার্ড</span>
+              <h3 data-bn="MCW Bangladesh Starter Hub" data-en="MCW Bangladesh Starter Hub">
+                MCW Bangladesh Starter Hub
+              </h3>
+            </div>
+
+            <ul class="feature-list">
+              <li data-bn="সর্বশেষ বোনাস আপডেট" data-en="Latest bonus updates">সর্বশেষ বোনাস আপডেট</li>
+              <li data-bn="নতুনদের জন্য সহজ গাইড" data-en="Beginner-friendly guide">নতুনদের জন্য সহজ গাইড</li>
+              <li data-bn="ডিপোজিট ও উইথড্র তথ্য" data-en="Deposit & withdrawal info">ডিপোজিট ও উইথড্র তথ্য</li>
+              <li data-bn="প্রমো ও টেলিগ্রাম আপডেট" data-en="Promo and Telegram updates">প্রমো ও টেলিগ্রাম আপডেট</li>
             </ul>
+
+            <a
+              href="pages/telegram.html"
+              class="panel-link"
+              data-bn="আপডেট পেতে জয়েন করুন"
+              data-en="Join for updates"
+            >
+              আপডেট পেতে জয়েন করুন
+            </a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="promo-strip">
+      <div class="container promo-strip-inner">
+        <span data-bn="জনপ্রিয় সেকশন:" data-en="Popular sections:">জনপ্রিয় সেকশন:</span>
+        <a href="pages/promos.html" data-bn="ওয়েলকাম বোনাস" data-en="Welcome Bonus">ওয়েলকাম বোনাস</a>
+        <a href="pages/promos.html" data-bn="রেসকিউ বোনাস" data-en="Rescue Bonus">রেসকিউ বোনাস</a>
+        <a href="pages/deposit-withdraw.html" data-bn="ডিপোজিট গাইড" data-en="Deposit Guide">ডিপোজিট গাইড</a>
+        <a href="pages/games.html" data-bn="জনপ্রিয় গেমস" data-en="Popular Games">জনপ্রিয় গেমস</a>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
         <div class="section-head">
-          <h2>What You Can Find Here</h2>
-          <p>সবকিছু এক জায়গায় সহজভাবে সাজানো থাকবে।</p>
+          <h2 data-bn="BestPlayBD এ কী পাবেন" data-en="What You Can Find on BestPlayBD">
+            BestPlayBD এ কী পাবেন
+          </h2>
+          <p data-bn="সবকিছু এক জায়গায় পরিষ্কারভাবে সাজানো থাকবে।" data-en="Everything is organized clearly in one place.">
+            সবকিছু এক জায়গায় পরিষ্কারভাবে সাজানো থাকবে।
+          </p>
         </div>
 
         <div class="cards">
-          <article class="card">
-            <h3>MCW Review</h3>
-            <p>MCW কী, কেন জনপ্রিয়, নতুন ব্যবহারকারীদের জন্য কী জানা দরকার — সব একসাথে।</p>
-            <a href="pages/review.html" class="text-link">Read more</a>
+          <article class="card content-card">
+            <div class="card-icon">★</div>
+            <h3 data-bn="MCW রিভিউ" data-en="MCW Review">MCW রিভিউ</h3>
+            <p
+              data-bn="MCW কী, কেন জনপ্রিয়, নতুন ব্যবহারকারীদের কী জানা দরকার — সব একসাথে।"
+              data-en="Learn what MCW is, why it is popular, and what new users should know."
+            >
+              MCW কী, কেন জনপ্রিয়, নতুন ব্যবহারকারীদের কী জানা দরকার — সব একসাথে।
+            </p>
+            <a href="pages/review.html" class="text-link" data-bn="আরও পড়ুন" data-en="Read more">আরও পড়ুন</a>
           </article>
 
-          <article class="card">
-            <h3>Latest Promotions</h3>
-            <p>চলমান বোনাস, প্রমো কোড, রিওয়ার্ড ও বিশেষ অফারের আপডেট সহজভাবে।</p>
-            <a href="pages/promos.html" class="text-link">View promotions</a>
+          <article class="card content-card">
+            <div class="card-icon">🎁</div>
+            <h3 data-bn="সর্বশেষ প্রমোশন" data-en="Latest Promotions">সর্বশেষ প্রমোশন</h3>
+            <p
+              data-bn="চলমান বোনাস, প্রমো কোড, রিওয়ার্ড ও বিশেষ অফারের আপডেট সহজভাবে।"
+              data-en="See active bonuses, promo codes, rewards and special offers in one place."
+            >
+              চলমান বোনাস, প্রমো কোড, রিওয়ার্ড ও বিশেষ অফারের আপডেট সহজভাবে।
+            </p>
+            <a href="pages/promos.html" class="text-link" data-bn="প্রমো দেখুন" data-en="View promotions">প্রমো দেখুন</a>
           </article>
 
-          <article class="card">
-            <h3>Deposit & Withdraw Guide</h3>
-            <p>কিভাবে শুরু করবেন, ডিপোজিট করবেন, আর উইথড্র বুঝবেন — ধাপে ধাপে।</p>
-            <a href="pages/deposit-withdraw.html" class="text-link">Open guide</a>
+          <article class="card content-card">
+            <div class="card-icon">৳</div>
+            <h3 data-bn="ডিপোজিট ও উইথড্র গাইড" data-en="Deposit & Withdraw Guide">ডিপোজিট ও উইথড্র গাইড</h3>
+            <p
+              data-bn="কিভাবে শুরু করবেন, ডিপোজিট করবেন, আর উইথড্র বুঝবেন — ধাপে ধাপে।"
+              data-en="Understand how to get started, deposit, and follow withdrawal steps."
+            >
+              কিভাবে শুরু করবেন, ডিপোজিট করবেন, আর উইথড্র বুঝবেন — ধাপে ধাপে।
+            </p>
+            <a href="pages/deposit-withdraw.html" class="text-link" data-bn="গাইড খুলুন" data-en="Open guide">গাইড খুলুন</a>
           </article>
         </div>
       </div>
@@ -91,29 +187,103 @@
     <section class="section alt-section">
       <div class="container">
         <div class="section-head">
-          <h2>Why BestPlayBD</h2>
-          <p>নতুন ও আগ্রহী ব্যবহারকারীদের জন্য সহজ, পরিষ্কার ও মোবাইল-ফ্রেন্ডলি অভিজ্ঞতা।</p>
+          <h2 data-bn="কেন BestPlayBD" data-en="Why BestPlayBD">কেন BestPlayBD</h2>
+          <p
+            data-bn="নতুন ও আগ্রহী ব্যবহারকারীদের জন্য সহজ, পরিষ্কার ও মোবাইল-ফ্রেন্ডলি অভিজ্ঞতা।"
+            data-en="A simple, clean and mobile-friendly experience for new and interested users."
+          >
+            নতুন ও আগ্রহী ব্যবহারকারীদের জন্য সহজ, পরিষ্কার ও মোবাইল-ফ্রেন্ডলি অভিজ্ঞতা।
+          </p>
         </div>
 
         <div class="info-grid">
           <div class="info-box">
-            <h3>Easy to Understand</h3>
-            <p>বাংলা ভাষায় সহজভাবে তথ্য সাজানো হবে, যাতে নতুনরাও বুঝতে পারে।</p>
+            <h3 data-bn="সহজভাবে বোঝার মতো" data-en="Easy to Understand">সহজভাবে বোঝার মতো</h3>
+            <p
+              data-bn="বাংলা ভাষায় সহজভাবে তথ্য সাজানো হবে, যাতে নতুনরাও বুঝতে পারে।"
+              data-en="Content is organized in a simple way so even new users can understand it."
+            >
+              বাংলা ভাষায় সহজভাবে তথ্য সাজানো হবে, যাতে নতুনরাও বুঝতে পারে।
+            </p>
           </div>
 
           <div class="info-box">
-            <h3>Mobile Friendly</h3>
-            <p>বাংলাদেশে বেশিরভাগ ব্যবহারকারী মোবাইল দিয়ে ব্রাউজ করে, তাই ডিজাইন মোবাইল-ফার্স্ট।</p>
+            <h3 data-bn="মোবাইল ফ্রেন্ডলি" data-en="Mobile Friendly">মোবাইল ফ্রেন্ডলি</h3>
+            <p
+              data-bn="বাংলাদেশে বেশিরভাগ ব্যবহারকারী মোবাইল দিয়ে ব্রাউজ করে, তাই ডিজাইন মোবাইল-ফার্স্ট।"
+              data-en="Most users browse on mobile, so the design is built mobile-first."
+            >
+              বাংলাদেশে বেশিরভাগ ব্যবহারকারী মোবাইল দিয়ে ব্রাউজ করে, তাই ডিজাইন মোবাইল-ফার্স্ট।
+            </p>
           </div>
 
           <div class="info-box">
-            <h3>Updated Promos</h3>
-            <p>চলমান অফার, বোনাস ও গুরুত্বপূর্ণ প্রমো তথ্য আলাদা করে দেখানো হবে।</p>
+            <h3 data-bn="আপডেটেড প্রমো" data-en="Updated Promos">আপডেটেড প্রমো</h3>
+            <p
+              data-bn="চলমান অফার, বোনাস ও গুরুত্বপূর্ণ প্রমো তথ্য আলাদা করে দেখানো হবে।"
+              data-en="Active offers, bonuses and important promo information are highlighted clearly."
+            >
+              চলমান অফার, বোনাস ও গুরুত্বপূর্ণ প্রমো তথ্য আলাদা করে দেখানো হবে।
+            </p>
           </div>
 
           <div class="info-box">
-            <h3>Growth Ready</h3>
-            <p>এখন MCW দিয়ে শুরু, পরে চাইলে অন্য ব্র্যান্ডও সুন্দরভাবে যোগ করা যাবে।</p>
+            <h3 data-bn="ভবিষ্যতে আরও বড়" data-en="Growth Ready">ভবিষ্যতে আরও বড়</h3>
+            <p
+              data-bn="এখন MCW দিয়ে শুরু, পরে চাইলে অন্য ব্র্যান্ডও সুন্দরভাবে যোগ করা যাবে।"
+              data-en="Start with MCW first, and later expand into other brands smoothly."
+            >
+              এখন MCW দিয়ে শুরু, পরে চাইলে অন্য ব্র্যান্ডও সুন্দরভাবে যোগ করা যাবে।
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section spotlight-section">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-bn="বর্তমান ফোকাস" data-en="Current Focus">বর্তমান ফোকাস</h2>
+          <p
+            data-bn="MCW সম্পর্কিত সবচেয়ে গুরুত্বপূর্ণ ৩টি জিনিস প্রথমে ঠিকভাবে সাজানো হবে।"
+            data-en="The three most important MCW areas will be organized first."
+          >
+            MCW সম্পর্কিত সবচেয়ে গুরুত্বপূর্ণ ৩টি জিনিস প্রথমে ঠিকভাবে সাজানো হবে।
+          </p>
+        </div>
+
+        <div class="spotlight-grid">
+          <div class="spotlight-box">
+            <span class="spotlight-no">01</span>
+            <h3 data-bn="বোনাস ও অফার" data-en="Bonuses & Offers">বোনাস ও অফার</h3>
+            <p
+              data-bn="ওয়েলকাম অফার, রিওয়ার্ড, কোড ও চলমান প্রচারণা।"
+              data-en="Welcome offers, rewards, codes and active campaigns."
+            >
+              ওয়েলকাম অফার, রিওয়ার্ড, কোড ও চলমান প্রচারণা।
+            </p>
+          </div>
+
+          <div class="spotlight-box">
+            <span class="spotlight-no">02</span>
+            <h3 data-bn="গাইড ও সহায়তা" data-en="Guides & Help">গাইড ও সহায়তা</h3>
+            <p
+              data-bn="নতুন ব্যবহারকারীদের জন্য সহজ শুরু, সাধারণ ব্যাখ্যা ও তথ্য।"
+              data-en="Simple start, clear explanations and useful information for new users."
+            >
+              নতুন ব্যবহারকারীদের জন্য সহজ শুরু, সাধারণ ব্যাখ্যা ও তথ্য।
+            </p>
+          </div>
+
+          <div class="spotlight-box">
+            <span class="spotlight-no">03</span>
+            <h3 data-bn="টেলিগ্রাম আপডেট" data-en="Telegram Updates">টেলিগ্রাম আপডেট</h3>
+            <p
+              data-bn="নতুন প্রমো, আপডেট ও দ্রুত নোটিস পাওয়ার সহজ উপায়।"
+              data-en="An easy way to get new promos, updates and quick notices."
+            >
+              নতুন প্রমো, আপডেট ও দ্রুত নোটিস পাওয়ার সহজ উপায়।
+            </p>
           </div>
         </div>
       </div>
@@ -122,10 +292,22 @@
     <section class="section cta-section">
       <div class="container cta-box">
         <div>
-          <h2>Stay Updated</h2>
-          <p>নতুন অফার, বোনাস ও গুরুত্বপূর্ণ আপডেট পেতে আমাদের Telegram আপডেট পেজ দেখুন।</p>
+          <h2 data-bn="আপডেট থাকুন" data-en="Stay Updated">আপডেট থাকুন</h2>
+          <p
+            data-bn="নতুন অফার, বোনাস ও গুরুত্বপূর্ণ আপডেট পেতে আমাদের টেলিগ্রাম আপডেট পেজ দেখুন।"
+            data-en="Check our Telegram update page to stay informed about new offers, bonuses and important updates."
+          >
+            নতুন অফার, বোনাস ও গুরুত্বপূর্ণ আপডেট পেতে আমাদের টেলিগ্রাম আপডেট পেজ দেখুন।
+          </p>
         </div>
-        <a href="pages/telegram.html" class="btn btn-primary">Join Telegram</a>
+        <a
+          href="pages/telegram.html"
+          class="btn btn-primary"
+          data-bn="টেলিগ্রাম জয়েন"
+          data-en="Join Telegram"
+        >
+          টেলিগ্রাম জয়েন
+        </a>
       </div>
     </section>
   </main>
@@ -133,7 +315,13 @@
   <footer class="site-footer">
     <div class="container footer-wrap">
       <p>© 2026 BestPlayBD. All rights reserved.</p>
-      <p class="footer-note">Guide-style informational platform for promotions, updates, and helpful content.</p>
+      <p
+        class="footer-note"
+        data-bn="MCW সম্পর্কিত গাইড, আপডেট ও তথ্যভিত্তিক প্ল্যাটফর্ম।"
+        data-en="Guide-style platform for MCW updates, bonuses and helpful information."
+      >
+        MCW সম্পর্কিত গাইড, আপডেট ও তথ্যভিত্তিক প্ল্যাটফর্ম।
+      </p>
     </div>
   </footer>
 

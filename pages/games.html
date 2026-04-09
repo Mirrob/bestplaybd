@@ -3,26 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Games | BestPlayBD</title>
+  <title>Games Guide | BestPlayBD</title>
+  <meta name="description" content="Explore the game section structure for BestPlayBD, including MCW-style categories like sports, slots, live casino, and beginner-friendly explanations." />
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="container nav-wrap">
       <a href="../index.html" class="logo">BestPlayBD</a>
-      <nav class="nav show">
-        <a href="../index.html">Home</a>
+      <div class="top-actions">
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang="bn">বাংলা</button>
+          <button class="lang-btn" data-lang="en">English</button>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+      </div>
+      <nav class="nav" id="mainNav">
+        <a href="../index.html" data-bn="হোম" data-en="Home">হোম</a>
+        <a href="review.html" data-bn="MCW রিভিউ" data-en="MCW Review">MCW রিভিউ</a>
+        <a href="promos.html" data-bn="প্রমোশন" data-en="Promotions">প্রমোশন</a>
+        <a href="deposit-withdraw.html" data-bn="ডিপোজিট ও উইথড্র" data-en="Deposit & Withdraw">ডিপোজিট ও উইথড্র</a>
+        <a href="games.html" data-bn="গেমস" data-en="Games">গেমস</a>
+        <a href="telegram.html" class="nav-btn" data-bn="টেলিগ্রাম জয়েন" data-en="Join Telegram">টেলিগ্রাম জয়েন</a>
       </nav>
     </div>
   </header>
 
-  <main class="section">
-    <div class="container">
-      <div class="card">
-        <h1>Games</h1>
-        <p>This page is under construction. Content will be added step by step.</p>
+  <section class="page-hero">
+    <div class="container page-grid">
+      <div>
+        <span class="page-badge" data-bn="গেমস পেজ" data-en="Games Page">গেমস পেজ</span>
+        <h1 data-bn="Popular Game Categories" data-en="Popular Game Categories">Popular Game Categories</h1>
+        <p data-bn="এই পেজে MCW-স্টাইল গেম ক্যাটাগরিগুলো এমনভাবে সাজানো হয়েছে যাতে ব্যবহারকারীরা দ্রুত বুঝতে পারে কোন সেকশন কোন ধরনের আগ্রহের জন্য উপযুক্ত।" data-en="This page organizes MCW-style game categories so users can quickly understand which sections match which kind of interest.">এই পেজে MCW-স্টাইল গেম ক্যাটাগরিগুলো এমনভাবে সাজানো হয়েছে যাতে ব্যবহারকারীরা দ্রুত বুঝতে পারে কোন সেকশন কোন ধরনের আগ্রহের জন্য উপযুক্ত।</p>
+      </div>
+      <div class="page-side-card feature-panel">
+        <h3 data-bn="মূল বিভাগ" data-en="Core Categories">মূল বিভাগ</h3>
+        <ul>
+          <li data-bn="Sports" data-en="Sports">Sports</li>
+          <li data-bn="Slots" data-en="Slots">Slots</li>
+          <li data-bn="Live Casino" data-en="Live Casino">Live Casino</li>
+          <li data-bn="আরও বিস্তৃত গেম অপশন" data-en="More extended game options">আরও বিস্তৃত গেম অপশন</li>
+        </ul>
       </div>
     </div>
+  </section>
+
+  <main class="section">
+    <div class="container cards">
+      <article class="card content-card"><div class="card-icon">⚽</div><h3 data-bn="Sports" data-en="Sports">Sports</h3><p data-bn="খেলা-ভিত্তিক ব্যবহারকারীদের জন্য সবচেয়ে বেশি আকর্ষণ তৈরি করা সেকশনগুলোর একটি। বড় ইভেন্ট সময়ে এই অংশে আগ্রহ বাড়ে।" data-en="One of the most attractive sections for sports-focused users. Interest often grows during major events.">খেলা-ভিত্তিক ব্যবহারকারীদের জন্য সবচেয়ে বেশি আকর্ষণ তৈরি করা সেকশনগুলোর একটি। বড় ইভেন্ট সময়ে এই অংশে আগ্রহ বাড়ে।</p></article>
+      <article class="card content-card"><div class="card-icon">🎰</div><h3 data-bn="Slots" data-en="Slots">Slots</h3><p data-bn="ভিজ্যুয়াল ব্যানার, অফার এবং ক্যাম্পেইন-ফ্রেন্ডলি কনটেন্টের জন্য স্লট সেকশন খুব ভালো কাজ করে।" data-en="Slots work very well with visual banners, promotions, and campaign-friendly content.">ভিজ্যুয়াল ব্যানার, অফার এবং ক্যাম্পেইন-ফ্রেন্ডলি কনটেন্টের জন্য স্লট সেকশন খুব ভালো কাজ করে।</p></article>
+      <article class="card content-card"><div class="card-icon">🃏</div><h3 data-bn="Live Casino" data-en="Live Casino">Live Casino</h3><p data-bn="লাইভ ধরনের অভিজ্ঞতা পছন্দ করা ব্যবহারকারীদের জন্য এটি আলাদা আকর্ষণ তৈরি করে।" data-en="This creates a separate attraction for users who prefer a more live-style experience.">লাইভ ধরনের অভিজ্ঞতা পছন্দ করা ব্যবহারকারীদের জন্য এটি আলাদা আকর্ষণ তৈরি করে।</p></article>
+    </div>
   </main>
+
+  <section class="section alt-section">
+    <div class="container content-shell">
+      <h2 data-bn="গেম পেজে কনটেন্ট কীভাবে সাজাবেন" data-en="How to Structure the Games Page">গেম পেজে কনটেন্ট কীভাবে সাজাবেন</h2>
+      <ol>
+        <li data-bn="প্রথমে প্রধান গেম ক্যাটাগরি দেখান" data-en="Show the main game categories first">প্রথমে প্রধান গেম ক্যাটাগরি দেখান</li>
+        <li data-bn="তারপর কোন ক্যাটাগরি কার জন্য ভালো, সংক্ষিপ্তভাবে লিখুন" data-en="Then briefly explain which category suits which type of user">তারপর কোন ক্যাটাগরি কার জন্য ভালো, সংক্ষিপ্তভাবে লিখুন</li>
+        <li data-bn="অফার-সংযুক্ত সেকশনগুলো আলাদা CTA দিয়ে দেখান" data-en="Present offer-linked sections with separate CTA buttons">অফার-সংযুক্ত সেকশনগুলো আলাদা CTA দিয়ে দেখান</li>
+        <li data-bn="টেলিগ্রামে দ্রুত আপডেট পাওয়ার লিংক রাখুন" data-en="Keep a Telegram link for quicker updates">টেলিগ্রামে দ্রুত আপডেট পাওয়ার লিংক রাখুন</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section cta-section">
+    <div class="container cta-box">
+      <div>
+        <h2 data-bn="গেমসের আগে প্রমো দেখুন" data-en="Check Promos Before Exploring Games">গেমসের আগে প্রমো দেখুন</h2>
+        <p data-bn="অনেক ব্যবহারকারী আগে অফার দেখে তারপর গেম ক্যাটাগরি এক্সপ্লোর করে। তাই প্রমো পেজের সঙ্গে এই পেজকে সংযুক্ত রাখা ভালো।" data-en="Many users check offers first and then explore game categories. That is why this page should stay connected with the promotions page.">অনেক ব্যবহারকারী আগে অফার দেখে তারপর গেম ক্যাটাগরি এক্সপ্লোর করে। তাই প্রমো পেজের সঙ্গে এই পেজকে সংযুক্ত রাখা ভালো।</p>
+      </div>
+      <a href="promos.html" class="btn btn-primary" data-bn="প্রমো দেখুন" data-en="See Promotions">প্রমো দেখুন</a>
+    </div>
+  </section>
+
+  <footer class="site-footer"><div class="container footer-wrap"><p>© 2026 BestPlayBD. All rights reserved.</p><p class="footer-note" data-bn="MCW সম্পর্কিত গাইড, আপডেট ও তথ্যভিত্তিক প্ল্যাটফর্ম।" data-en="Guide-style platform for MCW updates, bonuses and helpful information.">MCW সম্পর্কিত গাইড, আপডেট ও তথ্যভিত্তিক প্ল্যাটফর্ম।</p></div></footer>
+  <script src="../app.js"></script>
 </body>
 </html>

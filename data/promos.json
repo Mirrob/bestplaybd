@@ -1,0 +1,51 @@
+{
+  "telegram_link": "https://t.me/mcwaffbdtchannel",
+  "signup_link": "https://bd.mcwaffiliates.com/",
+  "promos": [
+    {
+      "id": "promo-welcome",
+      "tag_bn": "নতুন",
+      "tag_en": "New Users",
+      "title_bn": "ফার্স্ট ডিপোজিট বোনাস",
+      "title_en": "First Deposit Bonus",
+      "summary_bn": "নতুন ব্যবহারকারীদের জন্য শুরুতেই আকর্ষণীয় অফার। দ্রুত শুরু করতে চাইলে এই সেকশনটি আগে দেখা ভালো।",
+      "summary_en": "A strong starter offer for new users. This is the first section worth checking if you want to get started quickly.",
+      "details_bn": "প্রথমবার শুরু করা ব্যবহারকারীদের জন্য উপযোগী অফার-ধরনের একটি উদাহরণ। আপনার সাইটে পরবর্তী সময়ে শর্ত, সময়সীমা, স্ক্রিনশট এবং আপডেটেড ব্যানার বসানো যাবে।",
+      "details_en": "A sample offer type suitable for first-time users. You can later place terms, timing, screenshots, and updated banners on your site.",
+      "banner": "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80",
+      "updated": "Updated recently",
+      "cta_bn": "এখন সাইন আপ",
+      "cta_en": "Sign Up Now"
+    },
+    {
+      "id": "promo-rescue",
+      "tag_bn": "রিকভারি",
+      "tag_en": "Rescue",
+      "title_bn": "রেসকিউ বোনাস",
+      "title_en": "Rescue Bonus",
+      "summary_bn": "নিয়মিত আপডেট অনুসরণ করা ব্যবহারকারীদের জন্য এই ধরনের অফার বেশি কার্যকর এবং টেলিগ্রাম আপডেটের সাথে ভালো যায়।",
+      "summary_en": "This kind of offer is especially useful for users who follow regular updates and pairs well with Telegram alerts.",
+      "details_bn": "রেসকিউ-ধরনের প্রচারণা সাধারণত দ্রুত জানানো দরকার হয়। তাই এই পেজে ব্যানার, ছোট ব্যাখ্যা, এবং সরাসরি সাইন-আপ বা ওপেন-ডিটেইলস বাটন রাখা হয়েছে।",
+      "details_en": "Rescue-style campaigns usually need fast visibility. This page is built with a banner, short explanation, and direct buttons for details or sign-up.",
+      "banner": "https://images.unsplash.com/photo-1511884642898-4c92249e20b6?auto=format&fit=crop&w=1200&q=80",
+      "updated": "Updated recently",
+      "cta_bn": "অফার নিয়ে শুরু করুন",
+      "cta_en": "Start with This Offer"
+    },
+    {
+      "id": "promo-lucky-spin",
+      "tag_bn": "স্পেশাল",
+      "tag_en": "Special",
+      "title_bn": "লাকি স্পিন অফার",
+      "title_en": "Lucky Spin Offer",
+      "summary_bn": "দ্রুত আকর্ষণ তৈরি করার মতো ভিজ্যুয়াল ক্যাম্পেইন-টাইপ অফার। হোমপেজ, টেলিগ্রাম ও প্রমো পেজে ভালোভাবে তুলে ধরা যায়।",
+      "summary_en": "A visual campaign-style offer that works well for quick attention on homepages, Telegram posts, and promo sections.",
+      "details_bn": "ভিজ্যুয়াল-ফোকাসড ক্যাম্পেইনের জন্য আলাদা ব্যানার ব্লক ও CTA ব্যবহার করলে কনভার্সন ভালো হতে পারে।",
+      "details_en": "Dedicated banner blocks and CTA buttons often perform better for visually focused campaigns.",
+      "banner": "https://images.unsplash.com/photo-1596838132731-3301c3fd4317?auto=format&fit=crop&w=1200&q=80",
+      "updated": "Updated recently",
+      "cta_bn": "লাকি অফার দেখুন",
+      "cta_en": "View Lucky Offer"
+    }
+  ]
+}

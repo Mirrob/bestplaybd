@@ -52,26 +52,38 @@ function promoDetailHref(id) {
   return `${id}.html`;
 }
 
-function promoCardHTML(promo, signupLink) {
+function promoLink(promo, data) {
+  return promo.link || (data.brand_links && data.brand_links[promo.brand]) || data.signup_link || "#";
+}
+
+function brandLink(brand, data) {
+  return brand.link || (data.brand_links && data.brand_links[brand.brand]) || data.signup_link || "#";
+}
+
+function promoCardHTML(promo, data) {
   const lang = currentLang();
   const tag = promo[`tag_${lang}`];
   const title = promo[`title_${lang}`];
   const summary = promo[`summary_${lang}`];
   const detailsText = lang === "bn" ? "বিস্তারিত দেখুন" : "Open Details";
   const signupText = promo[`cta_${lang}`] || (lang === "bn" ? "এখন সাইন আপ" : "Sign Up Now");
+  const targetLink = promoLink(promo, data);
+  const brand = promo.brand ? `<span class="promo-brand">${promo.brand}</span>` : "";
+  const detailsHref = window.location.pathname.includes("/pages/") ? "promos.html" : "pages/promos.html";
   return `
     <article class="card dynamic-promo-card">
       <img class="promo-banner" src="${promo.banner}" alt="${title}">
       <div class="promo-body">
         <div class="promo-meta">
+          ${brand}
           <span class="promo-tag">${tag}</span>
           <span class="promo-updated">${promo.updated}</span>
         </div>
         <h3>${title}</h3>
         <p class="promo-summary">${summary}</p>
         <div class="promo-card-actions">
-          <a class="btn btn-secondary" href="${promoDetailHref(promo.id)}">${detailsText}</a>
-          <a class="btn btn-primary" href="${signupLink}" target="_blank" rel="noopener noreferrer">${signupText}</a>
+          <a class="btn btn-secondary" href="${detailsHref}">${detailsText}</a>
+          <a class="btn btn-primary" href="${targetLink}" target="_blank" rel="noopener noreferrer">${signupText}</a>
         </div>
       </div>
     </article>
@@ -83,7 +95,7 @@ async function renderPromosPage() {
   if (!grid) return;
   try {
     const data = await loadPromoData();
-    grid.innerHTML = data.promos.map((promo) => promoCardHTML(promo, data.signup_link)).join("");
+    grid.innerHTML = data.promos.map((promo) => promoCardHTML(promo, data)).join("");
   } catch (error) {
     grid.innerHTML = `<div class="card empty-state"><h3>Unable to load promos</h3><p>Please try again later.</p></div>`;
   }
@@ -109,7 +121,7 @@ async function renderPromoDetailPage() {
             <h1>${promo[`title_${lang}`]}</h1>
             <p>${promo[`summary_${lang}`]}</p>
             <div class="detail-actions">
-              <a class="btn btn-primary" href="${data.signup_link}" target="_blank" rel="noopener noreferrer">${promo[`cta_${lang}`] || (lang === "bn" ? "এখন সাইন আপ" : "Sign Up Now")}</a>
+              <a class="btn btn-primary" href="${promoLink(promo, data)}" target="_blank" rel="noopener noreferrer">${promo[`cta_${lang}`] || (lang === "bn" ? "এখন সাইন আপ" : "Sign Up Now")}</a>
               <a class="btn btn-secondary" href="${data.telegram_link}" target="_blank" rel="noopener noreferrer">${lang === "bn" ? "টেলিগ্রাম আপডেট" : "Telegram Updates"}</a>
             </div>
           </div>
@@ -156,7 +168,7 @@ async function renderPromoDetailPage() {
             <div class="content-shell">
               <h2>${lang === "bn" ? "দ্রুত একশন" : "Quick Action"}</h2>
               <div class="detail-actions">
-                <a class="btn btn-primary" href="${data.signup_link}" target="_blank" rel="noopener noreferrer">${promo[`cta_${lang}`] || (lang === "bn" ? "এখন সাইন আপ" : "Sign Up Now")}</a>
+                <a class="btn btn-primary" href="${promoLink(promo, data)}" target="_blank" rel="noopener noreferrer">${promo[`cta_${lang}`] || (lang === "bn" ? "এখন সাইন আপ" : "Sign Up Now")}</a>
                 <a class="btn btn-secondary" href="promos.html">${lang === "bn" ? "সব প্রমো দেখুন" : "See All Promos"}</a>
               </div>
             </div>
@@ -166,6 +178,53 @@ async function renderPromoDetailPage() {
     `;
   } catch (error) {
     holder.innerHTML = `<div class="card empty-state"><h2>Unable to load promo detail</h2></div>`;
+  }
+}
+
+
+async function renderHomeBrandSections() {
+  const brandGrid = document.getElementById("topBrandsGrid");
+  const tableBody = document.getElementById("brandCompareBody");
+  const featuredGrid = document.getElementById("featuredPromoGrid");
+  const allPromoGrid = document.getElementById("homePromoGrid");
+  if (!brandGrid && !tableBody && !featuredGrid && !allPromoGrid) return;
+  try {
+    const data = await loadPromoData();
+    const lang = currentLang();
+    const brands = (data.brands || []).sort((a,b)=>(a.rank||99)-(b.rank||99));
+    if (brandGrid) {
+      brandGrid.innerHTML = brands.slice(0,3).map((brand) => `
+        <article class="rank-card">
+          <span class="rank-badge">#${brand.rank}</span>
+          <h3>${brand.brand}</h3>
+          <p>${brand[`best_for_${lang}`] || brand.best_for_en || "Recommended"}</p>
+          <div class="rating-line">★ ${brand.rating}</div>
+          <a class="btn btn-primary" href="${brandLink(brand, data)}" target="_blank" rel="noopener noreferrer">${lang === "bn" ? "বোনাস দেখুন" : "View Bonus"}</a>
+        </article>
+      `).join("");
+    }
+    if (tableBody) {
+      tableBody.innerHTML = brands.map((brand) => `
+        <tr>
+          <td><strong>${brand.brand}</strong><span>${brand[`best_for_${lang}`] || brand.best_for_en || "Recommended"}</span></td>
+          <td>${brand[`bonus_${lang}`] || brand.bonus_en || "Bonus"}</td>
+          <td>${brand[`deposit_${lang}`] || brand.deposit_en || "bKash / Nagad"}</td>
+          <td>${brand[`withdraw_${lang}`] || brand.withdraw_en || "Fast"}</td>
+          <td>★ ${brand.rating}</td>
+          <td><a class="mini-cta" href="${brandLink(brand, data)}" target="_blank" rel="noopener noreferrer">${lang === "bn" ? "খেলুন" : "Play"}</a></td>
+        </tr>
+      `).join("");
+    }
+    if (featuredGrid) {
+      featuredGrid.innerHTML = data.promos.filter(p => p.featured).slice(0,3).map((promo) => promoCardHTML(promo, data)).join("");
+    }
+    if (allPromoGrid) {
+      allPromoGrid.innerHTML = data.promos.map((promo) => promoCardHTML(promo, data)).join("");
+    }
+  } catch (error) {
+    [brandGrid, featuredGrid, allPromoGrid].filter(Boolean).forEach(el => {
+      el.innerHTML = `<div class="card empty-state"><h3>Unable to load data</h3></div>`;
+    });
   }
 }
 
@@ -188,7 +247,8 @@ async function renderDynamicContent() {
   await Promise.all([
     renderPromosPage(),
     renderPromoDetailPage(),
-    hydrateTelegramLinks()
+    hydrateTelegramLinks(),
+    renderHomeBrandSections()
   ]);
 }
 

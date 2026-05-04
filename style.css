@@ -149,3 +149,38 @@ body {
     min-height: auto;
   }
 }
+
+/* V3.2 professional finishing */
+.payment-grid > span { padding: 0; }
+.wallet-logo { flex-direction: column; min-height: 92px; border-color: rgba(246,201,69,.22); }
+.wallet-logo > span { padding: 0 !important; border: 0 !important; background: none; }
+.wallet-logo:before { content: ""; display: block; width: 46px; height: 46px; border-radius: 14px; background: linear-gradient(135deg,#f6c945,#dca72e); box-shadow: inset 0 0 0 1px rgba(255,255,255,.3), 0 12px 24px rgba(0,0,0,.18); }
+.wallet-bkash:before { background: linear-gradient(135deg,#e2136e,#ff7ab3); clip-path: polygon(50% 0, 92% 45%, 61% 45%, 78% 100%, 39% 56%, 8% 56%); }
+.wallet-nagad:before { background: radial-gradient(circle at 65% 35%,#fff 0 13%,transparent 14%),linear-gradient(135deg,#f58220,#ef3b24); border-radius: 50%; }
+.wallet-rocket:before { background: linear-gradient(135deg,#8b2bbf,#ec4899); clip-path: polygon(50% 0,70% 34%,100% 40%,76% 62%,82% 100%,50% 80%,18% 100%,24% 62%,0 40%,30% 34%); }
+.wallet-upay:before { background: linear-gradient(135deg,#16a34a,#22c55e); border-radius: 12px 50% 12px 50%; }
+.wallet-bank:before { background: linear-gradient(135deg,#2563eb,#38bdf8); clip-path: polygon(50% 0,100% 35%,88% 35%,88% 100%,12% 100%,12% 35%,0 35%); }
+.hero h1 { font-size: clamp(1.9rem, 3.6vw, 3.1rem); max-width: 650px; }
+.hero-page h1 { font-size: clamp(1.75rem, 3.15vw, 2.75rem); }
+.brand-card { min-height: 285px; }
+.brand-card-top, .rating-line, .brand-facts, .card-actions { flex-shrink: 0; }
+.brand-card p { min-height: 48px; }
+.compare-table td, .compare-table th { vertical-align: middle; }
+.games-hero .hero-grid { min-height: 430px; }
+.game-tabs-section { background: #111b31; border-block: 1px solid var(--line); position: sticky; top: 70px; z-index: 30; }
+.game-tabs { display: grid; grid-template-columns: repeat(9,minmax(86px,1fr)); gap: 0; overflow-x: auto; }
+.game-tab { display: grid; place-items: center; gap: 6px; padding: 14px 10px; color: #eaf0ff; font-weight: 900; border-inline-end: 1px solid rgba(255,255,255,.05); }
+.game-tab span { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,.12); }
+.game-tab.active, .game-tab:hover { background: rgba(246,201,69,.12); color: #fff; }
+.games-layout { display: grid; gap: 34px; }
+.game-provider-section { scroll-margin-top: 150px; }
+.game-section-head { display: flex; gap: 14px; align-items: center; margin-bottom: 14px; }
+.game-section-head > span { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 14px; background: rgba(246,201,69,.16); border: 1px solid rgba(246,201,69,.32); }
+.game-section-head h2 { margin: 0; font-size: 1.45rem; }
+.game-section-head p { margin: 2px 0 0; color: var(--muted); }
+.provider-grid { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 10px; }
+.provider-card { min-height: 96px; display: grid; place-items: center; gap: 8px; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.055); text-align: center; }
+.provider-card span { display: grid; place-items: center; min-width: 42px; height: 32px; padding: 0 8px; border-radius: 10px; color: #111827; background: linear-gradient(135deg,var(--gold),var(--gold2)); font-weight: 950; }
+.provider-card strong { font-size: .9rem; }
+@media (max-width: 980px) { .provider-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } .game-tabs { grid-template-columns: repeat(9,92px); } }
+@media (max-width: 640px) { .hero h1 { font-size: clamp(1.55rem, 8vw, 2.15rem); } .hero-page h1 { font-size: clamp(1.45rem, 7.5vw, 2rem); } .provider-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .game-tabs-section { top: 70px; } .wallet-logo { min-height: 84px; } }

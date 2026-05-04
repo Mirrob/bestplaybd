@@ -122,7 +122,7 @@ async function renderPromoDetailPage() {
             <p>${promo[`summary_${lang}`]}</p>
             <div class="detail-actions">
               <a class="btn btn-primary" href="${promoLink(promo, data)}" target="_blank" rel="noopener noreferrer">${promo[`cta_${lang}`] || (lang === "bn" ? "এখন সাইন আপ" : "Sign Up Now")}</a>
-              <a class="btn btn-secondary" href="${data.telegram_link}" target="_blank" rel="noopener noreferrer">${lang === "bn" ? "টেলিগ্রাম আপডেট" : "Telegram Updates"}</a>
+              <a class="btn btn-secondary" href="https://t.me/bestplaybd_win_big" target="_blank" rel="noopener noreferrer">${lang === "bn" ? "টেলিগ্রাম আপডেট" : "Telegram Updates"}</a>
             </div>
           </div>
           <div class="page-side-card feature-panel">
@@ -192,8 +192,9 @@ async function renderHomeBrandSections() {
     const data = await loadPromoData();
     const lang = currentLang();
     const brands = (data.brands || []).sort((a,b)=>(a.rank||99)-(b.rank||99));
+    if (!brands.length) return;
     if (brandGrid) {
-      brandGrid.innerHTML = brands.slice(0,3).map((brand) => `
+      brandGrid.innerHTML = brands.map((brand) => `
         <article class="rank-card">
           <span class="rank-badge">#${brand.rank}</span>
           <h3>${brand.brand}</h3>
@@ -234,7 +235,7 @@ async function hydrateTelegramLinks() {
   try {
     const data = await loadPromoData();
     items.forEach((item) => {
-      item.href = data.telegram_link;
+      item.href = "https://t.me/bestplaybd_win_big";
       item.target = "_blank";
       item.rel = "noopener noreferrer";
     });

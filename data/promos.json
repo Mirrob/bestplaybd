@@ -1,5 +1,5 @@
 {
-  "telegram_link": "https://t.me/mcwaffbdtchannel",
+  "telegram_link": "https://t.me/bestplaybd_win_big",
   "signup_link": "https://bd.mcwaffiliates.com/",
   "promos": [
     {
@@ -15,7 +15,9 @@
       "banner": "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80",
       "updated": "Updated recently",
       "cta_bn": "এখন সাইন আপ",
-      "cta_en": "Sign Up Now"
+      "cta_en": "Sign Up Now",
+      "featured": true,
+      "link": "https://facai777.net/bd/en/promotion"
     },
     {
       "id": "promo-rescue",
@@ -30,7 +32,9 @@
       "banner": "https://images.unsplash.com/photo-1511884642898-4c92249e20b6?auto=format&fit=crop&w=1200&q=80",
       "updated": "Updated recently",
       "cta_bn": "অফার নিয়ে শুরু করুন",
-      "cta_en": "Start with This Offer"
+      "cta_en": "Start with This Offer",
+      "featured": true,
+      "link": "https://banglawin88.net/bd/en/promotion"
     },
     {
       "id": "promo-lucky-spin",
@@ -45,7 +49,93 @@
       "banner": "https://images.unsplash.com/photo-1596838132731-3301c3fd4317?auto=format&fit=crop&w=1200&q=80",
       "updated": "Updated recently",
       "cta_bn": "লাকি অফার দেখুন",
-      "cta_en": "View Lucky Offer"
+      "cta_en": "View Lucky Offer",
+      "featured": true,
+      "link": "https://kgbd88.com/bd/en/promotion"
+    }
+  ],
+  "brand_links": {
+    "MCW": "https://facai777.net/bd/en/promotion",
+    "BanglaWin": "https://banglawin88.net/bd/en/promotion",
+    "Khelaghor": "https://kgbd88.com/bd/en/promotion",
+    "Deshislots": "https://deshislots88.net/bd/en/promotion",
+    "Banglabet": "https://bbetbd88.com/bd/en/promotion"
+  },
+  "brands": [
+    {
+      "rank": 1,
+      "brand": "MCW",
+      "rating": "4.9/5",
+      "min_deposit": "৳200",
+      "withdraw_bn": "24/7",
+      "withdraw_en": "24/7",
+      "best_for_bn": "স্পোর্টস + ক্যাসিনো",
+      "best_for_en": "Sports + Casino",
+      "bonus_bn": "স্পোর্টস + ক্যাসিনো",
+      "bonus_en": "Sports + Casino",
+      "deposit_bn": "bKash, Nagad, Rocket, Upay, Local Bank",
+      "deposit_en": "bKash, Nagad, Rocket, Upay, Local Bank",
+      "link": "https://facai777.net/bd/en/promotion"
+    },
+    {
+      "rank": 2,
+      "brand": "BanglaWin",
+      "rating": "4.8/5",
+      "min_deposit": "৳100",
+      "withdraw_bn": "24/7",
+      "withdraw_en": "24/7",
+      "best_for_bn": "স্লটস ক্যাসিনো + বেশি প্রোমো",
+      "best_for_en": "Slots Casino + Higher Promos",
+      "bonus_bn": "স্লটস ক্যাসিনো + বেশি প্রোমো",
+      "bonus_en": "Slots Casino + Higher Promos",
+      "deposit_bn": "bKash, Nagad, Rocket, Upay, Local Bank",
+      "deposit_en": "bKash, Nagad, Rocket, Upay, Local Bank",
+      "link": "https://banglawin88.net/bd/en/promotion"
+    },
+    {
+      "rank": 3,
+      "brand": "Khelaghor",
+      "rating": "4.7/5",
+      "min_deposit": "৳100",
+      "withdraw_bn": "24/7",
+      "withdraw_en": "24/7",
+      "best_for_bn": "স্পোর্টস + ক্যাসিনো",
+      "best_for_en": "Sports + Casino",
+      "bonus_bn": "স্পোর্টস + ক্যাসিনো",
+      "bonus_en": "Sports + Casino",
+      "deposit_bn": "bKash, Nagad, Rocket, Upay, Local Bank",
+      "deposit_en": "bKash, Nagad, Rocket, Upay, Local Bank",
+      "link": "https://kgbd88.com/bd/en/promotion"
+    },
+    {
+      "rank": 4,
+      "brand": "Deshislots",
+      "rating": "4.6/5",
+      "min_deposit": "৳100",
+      "withdraw_bn": "24/7",
+      "withdraw_en": "24/7",
+      "best_for_bn": "স্লটস + ক্যাসিনো + দেশি ভাইব",
+      "best_for_en": "Slots + Casino + Deshi vibes",
+      "bonus_bn": "স্লটস + ক্যাসিনো + দেশি ভাইব",
+      "bonus_en": "Slots + Casino + Deshi vibes",
+      "deposit_bn": "bKash, Nagad, Rocket, Upay, Local Bank",
+      "deposit_en": "bKash, Nagad, Rocket, Upay, Local Bank",
+      "link": "https://deshislots88.net/bd/en/promotion"
+    },
+    {
+      "rank": 5,
+      "brand": "Banglabet",
+      "rating": "4.5/5",
+      "min_deposit": "৳100",
+      "withdraw_bn": "24/7",
+      "withdraw_en": "24/7",
+      "best_for_bn": "স্লটস + ক্যাসিনো + নতুনদের জন্য সহজ",
+      "best_for_en": "Slots + Casino + Beginner friendly",
+      "bonus_bn": "স্লটস + ক্যাসিনো + নতুনদের জন্য সহজ",
+      "bonus_en": "Slots + Casino + Beginner friendly",
+      "deposit_bn": "bKash, Nagad, Rocket, Upay, Local Bank",
+      "deposit_en": "bKash, Nagad, Rocket, Upay, Local Bank",
+      "link": "https://bbetbd88.com/bd/en/promotion"
     }
   ]
 }

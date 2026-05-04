@@ -1,3 +1,37 @@
+
+const COMMON_TRANSLATIONS = [
+  ["Quick links:", "দ্রুত লিংক:"], ["Top Brands", "টপ ব্র্যান্ড"], ["Compare", "তুলনা"], ["Payments", "পেমেন্ট"], ["Promos", "প্রোমো"],
+  ["Join Telegram", "টেলিগ্রাম জয়েন করুন"], ["View top brands", "টপ ব্র্যান্ড দেখুন"], ["Quick Shortlist", "দ্রুত চেকলিস্ট"],
+  ["Minimum deposit", "মিনিমাম ডিপোজিট"], ["Payment support", "পেমেন্ট সাপোর্ট"], ["Withdrawal availability", "উইথড্র সুবিধা"], ["Bonus clarity", "বোনাস নিয়ম পরিষ্কার"],
+  ["Top 5 Comparison Table", "টপ ৫ তুলনা টেবিল"], ["Brand", "ব্র্যান্ড"], ["Min Deposit", "মিন ডিপোজিট"], ["Withdraw", "উইথড্র"], ["Payment", "পেমেন্ট"], ["Rating", "রেটিং"], ["Action", "অ্যাকশন"], ["Promo", "প্রোমো"],
+  ["Payment Method Guide", "পেমেন্ট মেথড গাইড"], ["Ranking Method", "র‍্যাঙ্কিং পদ্ধতি"], ["Quick Navigation", "দ্রুত নেভিগেশন"], ["Home", "হোম"], ["All Promos", "সব প্রোমো"], ["Deposit Guide", "ডিপোজিট গাইড"],
+  ["Brand-by-brand Explanation", "প্রতিটি ব্র্যান্ডের ব্যাখ্যা"], ["FAQ", "সাধারণ প্রশ্ন"], ["Which is best?", "কোনটি সেরা?"], ["Minimum deposit?", "মিনিমাম ডিপোজিট কত?"], ["Payment methods?", "পেমেন্ট মেথড কী?"],
+  ["Official Promo Page", "অফিশিয়াল প্রোমো পেজ"], ["Compare All Brands", "সব ব্র্যান্ড তুলনা করুন"], ["Pros and Cons", "ভালো দিক ও সীমাবদ্ধতা"], ["Pros", "ভালো দিক"], ["Cons", "সীমাবদ্ধতা"],
+  ["Overall", "সামগ্রিক"], ["Best For", "যাদের জন্য ভালো"], ["Mobile-friendly flow", "মোবাইলে ব্যবহার সহজ"], ["BD payment methods", "বাংলাদেশি পেমেন্ট মেথড"], ["24/7 withdrawal support", "২৪/৭ উইথড্র সাপোর্ট"],
+  ["Final terms must be checked on official page", "চূড়ান্ত নিয়ম অফিশিয়াল পেজে দেখে নিন"], ["Promo availability can change", "প্রোমো সময় অনুযায়ী বদলাতে পারে"],
+  ["MCW is strong for Sports + Casino. BanglaWin is strong for slots and higher promos.", "Sports + Casino এর জন্য MCW ভালো। Slots ও বেশি প্রোমোর জন্য BanglaWin ভালো।"],
+  ["MCW ৳200. BanglaWin, Khelaghor, Deshislots and Banglabet ৳100.", "MCW মিনিমাম ৳২০০। BanglaWin, Khelaghor, Deshislots ও Banglabet মিনিমাম ৳১০০।"],
+  ["Use the comparison table.", "তুলনা টেবিল দেখে ব্র্যান্ড বেছে নিন।"], ["Check turnover and expiry.", "টার্নওভার ও মেয়াদ আগে চেক করুন।"], ["Check cashier methods.", "ক্যাশিয়ার পেজে পেমেন্ট মেথড দেখুন।"], ["Get fast updates.", "দ্রুত আপডেট পান।"]
+];
+
+function translateCommonText(lang) {
+  const map = new Map();
+  COMMON_TRANSLATIONS.forEach(([en, bn]) => map.set(lang === "bn" ? en : bn, lang === "bn" ? bn : en));
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      if (!node.parentElement || ["SCRIPT", "STYLE"].includes(node.parentElement.tagName)) return NodeFilter.FILTER_REJECT;
+      return node.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    }
+  });
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach((node) => {
+    const raw = node.nodeValue;
+    const trimmed = raw.trim();
+    if (map.has(trimmed)) node.nodeValue = raw.replace(trimmed, map.get(trimmed));
+  });
+}
+
 const menuToggle = document.getElementById("menuToggle");
 const mainNav = document.getElementById("mainNav");
 const langButtons = document.querySelectorAll(".lang-btn");
@@ -18,6 +52,8 @@ function applyLanguage(lang) {
   langButtons.forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.lang === lang);
   });
+
+  translateCommonText(lang);
 
   localStorage.setItem("bestplaybd_lang", lang);
 }
@@ -207,12 +243,12 @@ async function renderHomeBrandSections() {
     if (tableBody) {
       tableBody.innerHTML = brands.map((brand) => `
         <tr>
-          <td><strong>${brand.brand}</strong><span>${brand[`best_for_${lang}`] || brand.best_for_en || "Recommended"}</span></td>
-          <td>${brand[`bonus_${lang}`] || brand.bonus_en || "Bonus"}</td>
-          <td>${brand[`deposit_${lang}`] || brand.deposit_en || "bKash / Nagad"}</td>
-          <td>${brand[`withdraw_${lang}`] || brand.withdraw_en || "Fast"}</td>
-          <td>★ ${brand.rating}</td>
-          <td><a class="mini-cta" href="${brandLink(brand, data)}" target="_blank" rel="noopener noreferrer">${lang === "bn" ? "খেলুন" : "Play"}</a></td>
+          <td data-label="Brand"><strong>${brand.brand}</strong><span>${brand[`best_for_${lang}`] || brand.best_for_en || "Recommended"}</span></td>
+          <td data-label="Min Deposit">${brand.min_deposit || "৳100"}</td>
+          <td data-label="Withdraw">${brand[`withdraw_${lang}`] || brand.withdraw_en || "24/7"}</td>
+          <td data-label="Payment">${brand[`deposit_${lang}`] || brand.deposit_en || "bKash, Nagad, Rocket, Upay, Local Bank"}</td>
+          <td data-label="Rating">★ ${brand.rating}</td>
+          <td data-label="Action"><a class="mini-cta" href="${brandLink(brand, data)}" target="_blank" rel="noopener noreferrer">${lang === "bn" ? "প্রোমো" : "Promo"}</a></td>
         </tr>
       `).join("");
     }

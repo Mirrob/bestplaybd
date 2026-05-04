@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">Banglabet promo banner</title>
+  <desc id="desc">Banglabet beginner friendly bonus banner.</desc>
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#071126"/><stop offset=".52" stop-color="#163b73"/><stop offset="1" stop-color="#081126"/></linearGradient></defs>
+  <rect width="1200" height="520" fill="url(#bg)"/>
+  <circle cx="870" cy="240" r="145" fill="#f6c945" opacity=".18"/>
+  <rect x="770" y="150" width="280" height="180" rx="34" fill="#122143" stroke="#f6c945" stroke-width="8"/>
+  <text x="820" y="260" fill="#f6c945" font-family="Arial, sans-serif" font-size="72" font-weight="900">৳100</text>
+  <text x="88" y="145" fill="#f6c945" font-family="Arial, sans-serif" font-size="42" font-weight="800">Banglabet</text>
+  <text x="88" y="228" fill="#fff" font-family="Arial, sans-serif" font-size="76" font-weight="900">Bonus & Easy Start</text>
+  <text x="88" y="300" fill="#d8e4ff" font-family="Arial, sans-serif" font-size="34" font-weight="700">Beginner friendly • Slots + Casino</text>
+  <rect x="88" y="354" rx="22" width="330" height="74" fill="#f6c945"/>
+  <text x="126" y="403" fill="#111827" font-family="Arial, sans-serif" font-size="30" font-weight="900">Start Here</text>
+</svg>

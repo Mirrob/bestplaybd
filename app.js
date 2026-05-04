@@ -96,6 +96,11 @@ function brandLink(brand, data) {
   return brand.link || (data.brand_links && data.brand_links[brand.brand]) || data.signup_link || "#";
 }
 
+function assetPath(src) {
+  if (!src || /^(https?:)?\/\//.test(src) || src.startsWith("data:")) return src;
+  return window.location.pathname.includes("/pages/") ? `../${src}` : src;
+}
+
 function walletLogosHTML() {
   const wallets = [
     { cls: "wallet-bank", mark: "BANK", label: "Deposit", bn: "ব্যাংক" },
@@ -133,7 +138,7 @@ function promoCardHTML(promo, data) {
   const detailsHref = window.location.pathname.includes("/pages/") ? "promos.html" : "pages/promos.html";
   return `
     <article class="card dynamic-promo-card">
-      <img class="promo-banner" src="${promo.banner}" alt="${title}">
+      <img class="promo-banner" src="${assetPath(promo.banner)}" alt="${title}">
       <div class="promo-body">
         <div class="promo-meta">
           ${brand}
@@ -201,7 +206,7 @@ async function renderPromoDetailPage() {
         <div class="container detail-layout">
           <div class="detail-stack">
             <div class="page-banner-shell">
-              <img src="${promo.banner}" alt="${promo[`title_${lang}`]}">
+              <img src="${assetPath(promo.banner)}" alt="${promo[`title_${lang}`]}">
             </div>
 
             <div class="content-shell">

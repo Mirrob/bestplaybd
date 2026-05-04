@@ -461,3 +461,215 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* V3.5: promo page, ranking cards, all-brand review hub. */
+.promo-page-grid {
+  grid-template-columns: repeat(auto-fit,minmax(270px,1fr));
+  max-width: 1160px;
+  margin-inline: auto;
+}
+
+.promo-page-grid .dynamic-promo-card {
+  min-height: 520px;
+}
+
+.promo-page-grid .promo-banner {
+  height: 190px;
+  background: #101b34;
+}
+
+.compact-panel {
+  padding: 22px;
+}
+
+.compact-cta-section {
+  padding: 46px 0;
+}
+
+.compact-telegram {
+  width: min(760px,100%);
+  padding: 28px;
+  min-height: auto;
+}
+
+.compact-telegram .telegram-mark {
+  width: 46px;
+  height: 46px;
+  font-size: .9rem;
+}
+
+.compact-telegram h2 {
+  margin: 4px 0;
+  font-size: clamp(1.35rem,2vw,1.85rem);
+}
+
+.compact-telegram p {
+  margin: 0;
+}
+
+.ranking-points {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.ranking-points div,
+.nav-tile-list a,
+.explain-grid article,
+.review-brand-card {
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.045);
+  border-radius: 16px;
+}
+
+.ranking-points div {
+  padding: 16px;
+}
+
+.ranking-points span,
+.nav-tile-list span,
+.explain-grid span {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: linear-gradient(135deg,var(--gold),var(--gold2));
+  color: #111827;
+  font-weight: 950;
+  margin-bottom: 10px;
+}
+
+.ranking-points strong {
+  display: block;
+  color: #fff;
+  font-size: 1.05rem;
+}
+
+.ranking-points p,
+.explain-grid p {
+  margin: 6px 0 0;
+  color: #d8e4ff;
+}
+
+.nav-tile-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.nav-tile-list a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  font-weight: 950;
+}
+
+.nav-tile-list span {
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  font-size: .78rem;
+}
+
+.explain-grid {
+  display: grid;
+  grid-template-columns: repeat(5,minmax(0,1fr));
+  gap: 16px;
+}
+
+.explain-grid article {
+  padding: 18px;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+}
+
+.explain-grid h3 {
+  margin: 4px 0 8px;
+  font-size: 1.35rem;
+}
+
+.explain-grid a {
+  margin-top: auto;
+  color: var(--gold);
+  font-weight: 950;
+}
+
+.review-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(310px,1fr));
+  gap: 18px;
+}
+
+.review-brand-card {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-shadow: var(--shadow);
+  background: linear-gradient(180deg,rgba(24,40,73,.94),rgba(12,25,51,.94));
+}
+
+.review-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.review-card-head h3 {
+  margin: 0;
+  font-size: 1.55rem;
+}
+
+.review-card-head strong {
+  color: var(--gold);
+  font-size: 1.35rem;
+}
+
+.mini-score {
+  grid-template-columns: repeat(3,minmax(0,1fr));
+}
+
+.mini-score div {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px;
+  background: rgba(255,255,255,.05);
+}
+
+.mini-score strong {
+  color: var(--gold);
+}
+
+.mini-score span {
+  display: block;
+  color: #d8e4ff;
+  font-size: .82rem;
+  margin-top: 4px;
+}
+
+.compact-score strong {
+  font-size: 3.6rem;
+}
+
+@media (max-width: 1040px) {
+  .explain-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .ranking-points,
+  .explain-grid,
+  .mini-score {
+    grid-template-columns: 1fr;
+  }
+
+  .promo-page-grid .dynamic-promo-card {
+    min-height: auto;
+  }
+}

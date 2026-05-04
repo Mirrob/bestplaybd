@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">BanglaWin promo banner</title>
+  <desc id="desc">Slots and casino promotion banner for BanglaWin.</desc>
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#081126"/><stop offset=".55" stop-color="#3b145f"/><stop offset="1" stop-color="#090f22"/></linearGradient></defs>
+  <rect width="1200" height="520" fill="url(#bg)"/>
+  <circle cx="920" cy="180" r="95" fill="#f6c945"/><circle cx="1010" cy="290" r="118" fill="#e2136e" opacity=".82"/><circle cx="820" cy="330" r="75" fill="#42d392" opacity=".8"/>
+  <text x="88" y="145" fill="#f6c945" font-family="Arial, sans-serif" font-size="42" font-weight="800">BanglaWin</text>
+  <text x="88" y="228" fill="#fff" font-family="Arial, sans-serif" font-size="76" font-weight="900">Slots & Casino Promo</text>
+  <text x="88" y="300" fill="#d8e4ff" font-family="Arial, sans-serif" font-size="34" font-weight="700">Higher promos • ৳100 start</text>
+  <rect x="88" y="354" rx="22" width="342" height="74" fill="#f6c945"/>
+  <text x="126" y="403" fill="#111827" font-family="Arial, sans-serif" font-size="30" font-weight="900">Check Bonus</text>
+</svg>

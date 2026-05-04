@@ -356,3 +356,108 @@ body {
     min-height: 0;
   }
 }
+
+/* V3.4: FAQ, CTA quick links, five-brand promo grid, Telegram block. */
+.quick-strip .container {
+  gap: 10px;
+}
+
+.quick-strip strong {
+  margin-right: 6px;
+}
+
+.quick-strip a {
+  border: 1px solid rgba(246,201,69,.28);
+  background: rgba(246,201,69,.1);
+  color: #f7f9ff;
+  border-radius: 999px;
+  padding: 8px 13px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.quick-strip a:hover {
+  background: linear-gradient(135deg,var(--gold),var(--gold2));
+  color: #111827;
+}
+
+.brand-payment-pill {
+  flex-basis: 100%;
+  line-height: 1.35;
+}
+
+.promo-sync-grid {
+  grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+}
+
+.dynamic-promo-card h3 {
+  min-height: 62px;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 14px;
+}
+
+.faq-grid details {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px 18px;
+  background: linear-gradient(180deg,rgba(24,40,73,.92),rgba(12,25,51,.92));
+  box-shadow: 0 14px 34px rgba(0,0,0,.18);
+}
+
+.faq-grid summary {
+  cursor: pointer;
+  color: #fff;
+  font-weight: 950;
+}
+
+.faq-grid p {
+  color: #d8e4ff;
+  margin: 12px 0 0;
+}
+
+.telegram-cta {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  gap: 12px;
+  background:
+    radial-gradient(circle at 18% 20%, rgba(54,170,255,.28), transparent 30%),
+    linear-gradient(135deg, rgba(24,40,73,.96), rgba(9,20,43,.96));
+}
+
+.telegram-cta:after {
+  content: "";
+  position: absolute;
+  inset: auto -10% -38% -10%;
+  height: 130px;
+  background: radial-gradient(ellipse, rgba(246,201,69,.22), transparent 68%);
+  pointer-events: none;
+}
+
+.telegram-mark {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg,#38bdf8,#2563eb);
+  color: white;
+  font-weight: 950;
+  box-shadow: 0 18px 40px rgba(37,99,235,.32);
+}
+
+.telegram-cta > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 720px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+}

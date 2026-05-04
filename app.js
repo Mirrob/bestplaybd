@@ -261,7 +261,7 @@ async function renderHomeBrandSections() {
           "<div class=\"brand-card-top\"><span class=\"rank-badge\">#" + (brand.rank || "") + "</span><span class=\"rating-line\">★ " + (brand.rating || "4.5/5") + "</span></div>" +
           "<h3>" + brand.brand + "</h3>" +
           "<p>" + (brand[`best_for_${lang}`] || brand.best_for_en || "Recommended") + "</p>" +
-          "<div class=\"brand-facts\"><span>" + (brand.min_deposit || "৳100") + "</span><span>" + (brand[`withdraw_${lang}`] || brand.withdraw_en || "24/7") + "</span><span>bKash/Nagad</span></div>" +
+          "<div class=\"brand-facts\"><span>" + (brand.min_deposit || "৳100") + "</span><span>" + (brand[`withdraw_${lang}`] || brand.withdraw_en || "24/7") + "</span><span class=\"brand-payment-pill\">bKash · Nagad · Rocket · Upay · Bank · USDT</span></div>" +
           "<div class=\"card-actions\"><a class=\"btn btn-primary\" href=\"" + brandLink(brand, data) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + (lang === "bn" ? "প্রোমো দেখুন" : "View Bonus") + "</a><a class=\"btn btn-secondary\" href=\"" + reviewPath + "\">" + (lang === "bn" ? "রিভিউ" : "Review") + "</a></div>" +
         "</article>";
       }).join("");
@@ -272,13 +272,13 @@ async function renderHomeBrandSections() {
           "<td data-label=\"Brand\"><strong>" + brand.brand + "</strong><span>" + (brand[`best_for_${lang}`] || brand.best_for_en || "Recommended") + "</span></td>" +
           "<td data-label=\"Min Deposit\">" + (brand.min_deposit || "৳100") + "</td>" +
           "<td data-label=\"Withdraw\">" + (brand[`withdraw_${lang}`] || brand.withdraw_en || "24/7") + "</td>" +
-          "<td data-label=\"Payment\"><span class=\"payment-inline\">bKash · Nagad · Rocket · Upay · Bank</span></td>" +
+          "<td data-label=\"Payment\"><span class=\"payment-inline\">bKash · Nagad · Rocket · Upay · Bank · USDT</span></td>" +
           "<td data-label=\"Rating\">★ " + (brand.rating || "4.5/5") + "</td>" +
           "<td data-label=\"Action\"><a class=\"mini-cta\" href=\"" + brandLink(brand, data) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + (lang === "bn" ? "প্রোমো" : "Promo") + "</a></td>" +
         "</tr>"
       ).join("");
     }
-    if (featuredGrid) featuredGrid.innerHTML = data.promos.filter(p => p.featured).slice(0,3).map((promo) => promoCardHTML(promo, data)).join("");
+    if (featuredGrid) featuredGrid.innerHTML = data.promos.filter(p => p.featured).slice(0,5).map((promo) => promoCardHTML(promo, data)).join("");
     if (allPromoGrid) allPromoGrid.innerHTML = data.promos.map((promo) => promoCardHTML(promo, data)).join("");
   } catch (error) {
     [brandGrid, featuredGrid, allPromoGrid].filter(Boolean).forEach(el => { el.innerHTML = `<div class="card empty-state"><h3>Unable to load data</h3></div>`; });

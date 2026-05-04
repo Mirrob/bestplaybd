@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 from urllib.request import Request, urlopen
 
-SITE_URL = "https://facai777.net/bd/en"
+SITE_URL = "https://mcwpromo.com/"
 OUT_FILE = Path(__file__).resolve().parents[1] / "data" / "promos.json"
 
 def fetch_html(url: str) -> str:

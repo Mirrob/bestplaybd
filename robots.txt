@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://mirrob.github.io/bestplaybd/sitemap.xml

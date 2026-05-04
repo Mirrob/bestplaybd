@@ -409,3 +409,60 @@ img { max-width: 100%; display: block; }
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== BestPlayBD Multi-Brand Conversion Upgrade v1 ===== */
+.conversion-panel { border-color: rgba(216,175,72,0.28); }
+.rank-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.rank-card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(38,54,113,.94), rgba(25,38,83,.98));
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--radius);
+  padding: 26px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.rank-card:before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 4px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+.rank-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 48px; height: 48px; border-radius: 16px;
+  background: var(--gold); color: #111827; font-weight: 900; margin-bottom: 14px;
+}
+.rank-card h3 { margin: 0 0 8px; font-size: 1.65rem; }
+.rank-card p { margin: 0 0 14px; color: var(--muted); }
+.rating-line { color: var(--gold); font-weight: 900; margin-bottom: 18px; }
+.compare-shell { overflow-x: auto; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--line); }
+.compare-table { width: 100%; border-collapse: collapse; min-width: 820px; background: rgba(22,34,76,.92); }
+.compare-table th, .compare-table td { padding: 16px; text-align: left; border-bottom: 1px solid var(--line); }
+.compare-table th { color: var(--gold); font-size: .92rem; text-transform: uppercase; letter-spacing: .5px; background: rgba(255,255,255,.03); }
+.compare-table td { color: #f8fbff; vertical-align: middle; }
+.compare-table td span { display: block; color: var(--muted); font-size: .88rem; margin-top: 2px; }
+.mini-cta {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 9px 13px; border-radius: 11px; background: var(--gold); color: #111827; font-weight: 900;
+  white-space: nowrap;
+}
+.promo-brand {
+  display: inline-flex; align-items: center; padding: 6px 10px; border-radius: 999px;
+  background: rgba(255,255,255,.08); color: #fff; font-size: .8rem; font-weight: 900;
+}
+.sticky-mobile-cta { display: none; }
+@media (max-width: 920px) {
+  .rank-grid { grid-template-columns: 1fr; }
+  body { padding-bottom: 72px; }
+  .sticky-mobile-cta {
+    display: block; position: fixed; left: 14px; right: 14px; bottom: 14px; z-index: 1200;
+  }
+  .sticky-mobile-cta a {
+    display: flex; align-items: center; justify-content: center; min-height: 54px;
+    border-radius: 18px; background: linear-gradient(180deg, var(--gold), #c89a31);
+    color: #111827; font-weight: 950; box-shadow: 0 14px 34px rgba(0,0,0,.35);
+  }
+}
+@media (max-width: 640px) {
+  .compare-table th, .compare-table td { padding: 13px 12px; }
+  .rank-card { padding: 22px; }
+}

@@ -96,6 +96,31 @@ function brandLink(brand, data) {
   return brand.link || (data.brand_links && data.brand_links[brand.brand]) || data.signup_link || "#";
 }
 
+function walletLogosHTML() {
+  const wallets = [
+    { cls: "wallet-bank", mark: "BANK", label: "Deposit", bn: "ব্যাংক" },
+    { cls: "wallet-bkash", mark: "bKash", label: "bKash", bn: "বিকাশ" },
+    { cls: "wallet-nagad", mark: "Nagad", label: "Nagad", bn: "নগদ" },
+    { cls: "wallet-rocket", mark: "Rocket", label: "Rocket", bn: "রকেট" },
+    { cls: "wallet-upay", mark: "upay", label: "Upay", bn: "উপায়" },
+    { cls: "wallet-crypto", mark: "USDT", label: "Crypto", bn: "ক্রিপ্টো" },
+    { cls: "wallet-ok", mark: "ok", label: "OK Wallet", bn: "ওকে ওয়ালেট" },
+    { cls: "wallet-sure", mark: "Sure", label: "SureCash", bn: "শিওরক্যাশ" },
+    { cls: "wallet-mcash", mark: "mCash", label: "mCash", bn: "এমক্যাশ" }
+  ];
+  return wallets.map((wallet) => {
+    const name = currentLang() === "bn" ? wallet.bn : wallet.label;
+    return "<span class=\"wallet-logo " + wallet.cls + "\" title=\"" + wallet.label + "\"><span class=\"wallet-mark\">" + wallet.mark + "</span><span class=\"wallet-name\" data-bn=\"" + wallet.bn + "\" data-en=\"" + wallet.label + "\">" + name + "</span></span>";
+  }).join("");
+}
+
+function enhanceWalletLogos() {
+  document.querySelectorAll(".payment-grid").forEach((grid) => {
+    grid.classList.add("logo-strip");
+    grid.innerHTML = walletLogosHTML();
+  });
+}
+
 function promoCardHTML(promo, data) {
   const lang = currentLang();
   const tag = promo[`tag_${lang}`];
@@ -230,41 +255,35 @@ async function renderHomeBrandSections() {
     const brands = (data.brands || []).sort((a,b)=>(a.rank||99)-(b.rank||99));
     if (!brands.length) return;
     if (brandGrid) {
-      brandGrid.innerHTML = brands.map((brand) => `
-        <article class="rank-card">
-          <span class="rank-badge">#${brand.rank}</span>
-          <h3>${brand.brand}</h3>
-          <p>${brand[`best_for_${lang}`] || brand.best_for_en || "Recommended"}</p>
-          <div class="rating-line">★ ${brand.rating}</div>
-          <a class="btn btn-primary" href="${brandLink(brand, data)}" target="_blank" rel="noopener noreferrer">${lang === "bn" ? "বোনাস দেখুন" : "View Bonus"}</a>
-        </article>
-      `).join("");
+      brandGrid.innerHTML = brands.map((brand) => {
+        const reviewPath = window.location.pathname.includes("/pages/") ? (brand.brand === "MCW" ? "mcw-review.html" : brand.brand === "BanglaWin" ? "banglawin-review.html" : "best-betting-site-bd.html") : (brand.brand === "MCW" ? "pages/mcw-review.html" : brand.brand === "BanglaWin" ? "pages/banglawin-review.html" : "pages/best-betting-site-bd.html");
+        return "<article class=\"brand-card\">" +
+          "<div class=\"brand-card-top\"><span class=\"rank-badge\">#" + (brand.rank || "") + "</span><span class=\"rating-line\">★ " + (brand.rating || "4.5/5") + "</span></div>" +
+          "<h3>" + brand.brand + "</h3>" +
+          "<p>" + (brand[`best_for_${lang}`] || brand.best_for_en || "Recommended") + "</p>" +
+          "<div class=\"brand-facts\"><span>" + (brand.min_deposit || "৳100") + "</span><span>" + (brand[`withdraw_${lang}`] || brand.withdraw_en || "24/7") + "</span><span>bKash/Nagad</span></div>" +
+          "<div class=\"card-actions\"><a class=\"btn btn-primary\" href=\"" + brandLink(brand, data) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + (lang === "bn" ? "প্রোমো দেখুন" : "View Bonus") + "</a><a class=\"btn btn-secondary\" href=\"" + reviewPath + "\">" + (lang === "bn" ? "রিভিউ" : "Review") + "</a></div>" +
+        "</article>";
+      }).join("");
     }
     if (tableBody) {
-      tableBody.innerHTML = brands.map((brand) => `
-        <tr>
-          <td data-label="Brand"><strong>${brand.brand}</strong><span>${brand[`best_for_${lang}`] || brand.best_for_en || "Recommended"}</span></td>
-          <td data-label="Min Deposit">${brand.min_deposit || "৳100"}</td>
-          <td data-label="Withdraw">${brand[`withdraw_${lang}`] || brand.withdraw_en || "24/7"}</td>
-          <td data-label="Payment">${brand[`deposit_${lang}`] || brand.deposit_en || "bKash, Nagad, Rocket, Upay, Local Bank"}</td>
-          <td data-label="Rating">★ ${brand.rating}</td>
-          <td data-label="Action"><a class="mini-cta" href="${brandLink(brand, data)}" target="_blank" rel="noopener noreferrer">${lang === "bn" ? "প্রোমো" : "Promo"}</a></td>
-        </tr>
-      `).join("");
+      tableBody.innerHTML = brands.map((brand) =>
+        "<tr>" +
+          "<td data-label=\"Brand\"><strong>" + brand.brand + "</strong><span>" + (brand[`best_for_${lang}`] || brand.best_for_en || "Recommended") + "</span></td>" +
+          "<td data-label=\"Min Deposit\">" + (brand.min_deposit || "৳100") + "</td>" +
+          "<td data-label=\"Withdraw\">" + (brand[`withdraw_${lang}`] || brand.withdraw_en || "24/7") + "</td>" +
+          "<td data-label=\"Payment\"><span class=\"payment-inline\">bKash · Nagad · Rocket · Upay · Bank</span></td>" +
+          "<td data-label=\"Rating\">★ " + (brand.rating || "4.5/5") + "</td>" +
+          "<td data-label=\"Action\"><a class=\"mini-cta\" href=\"" + brandLink(brand, data) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + (lang === "bn" ? "প্রোমো" : "Promo") + "</a></td>" +
+        "</tr>"
+      ).join("");
     }
-    if (featuredGrid) {
-      featuredGrid.innerHTML = data.promos.filter(p => p.featured).slice(0,3).map((promo) => promoCardHTML(promo, data)).join("");
-    }
-    if (allPromoGrid) {
-      allPromoGrid.innerHTML = data.promos.map((promo) => promoCardHTML(promo, data)).join("");
-    }
+    if (featuredGrid) featuredGrid.innerHTML = data.promos.filter(p => p.featured).slice(0,3).map((promo) => promoCardHTML(promo, data)).join("");
+    if (allPromoGrid) allPromoGrid.innerHTML = data.promos.map((promo) => promoCardHTML(promo, data)).join("");
   } catch (error) {
-    [brandGrid, featuredGrid, allPromoGrid].filter(Boolean).forEach(el => {
-      el.innerHTML = `<div class="card empty-state"><h3>Unable to load data</h3></div>`;
-    });
+    [brandGrid, featuredGrid, allPromoGrid].filter(Boolean).forEach(el => { el.innerHTML = `<div class="card empty-state"><h3>Unable to load data</h3></div>`; });
   }
 }
-
 async function hydrateTelegramLinks() {
   const items = document.querySelectorAll("[data-telegram-link='true']");
   if (!items.length) return;
@@ -281,6 +300,7 @@ async function hydrateTelegramLinks() {
 }
 
 async function renderDynamicContent() {
+  enhanceWalletLogos();
   await Promise.all([
     renderPromosPage(),
     renderPromoDetailPage(),

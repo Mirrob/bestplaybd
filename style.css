@@ -270,6 +270,35 @@ body {
 .wallet-sure .wallet-mark { background: linear-gradient(135deg,#e0f2fe,#2563eb); color:#0f172a; }
 .wallet-mcash .wallet-mark { background: linear-gradient(135deg,#22c55e,#15803d); }
 
+.payment-grid.logo-strip .wallet-logo {
+  position: relative;
+  min-width: 104px;
+  min-height: 54px;
+  padding: 9px 12px;
+}
+
+.payment-grid.logo-strip .wallet-img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 92px;
+  max-height: 30px;
+  object-fit: contain;
+}
+
+.payment-grid.logo-strip .wallet-mark {
+  display: none;
+}
+
+.payment-grid.logo-strip .wallet-name {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
 .promo-sync-grid {
   align-items: stretch;
 }

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="108" height="36" viewBox="0 0 108 36" role="img" aria-label="Rocket">
+  <rect width="108" height="36" fill="none"/>
+  <text x="2" y="23" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="21" fill="#8d2bbd">Rocket</text>
+  <path d="M79 4c9 4 14 11 16 19l-10-3-7 9-2-12-11-4 11-2 3-7Z" fill="#8d2bbd"/>
+  <path d="M85 10c3 2 5 5 6 8l-5-2-3 4-1-6-5-2 6-1 2-1Z" fill="#f7d7ff"/>
+</svg>

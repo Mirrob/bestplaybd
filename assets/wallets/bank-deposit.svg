@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="38" viewBox="0 0 150 38" role="img" aria-label="Bank Deposit">
+  <rect width="150" height="38" fill="none"/>
+  <path d="M4 16 32 4l28 12H4Z" fill="#fff"/>
+  <path d="M10 18h8v14h-8V18Zm14 0h8v14h-8V18Zm14 0h8v14h-8V18Zm-34 16h56v4H4v-4Z" fill="#fff"/>
+  <circle cx="44" cy="8" r="7" fill="#f6c945"/>
+  <text x="67" y="17" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="14" fill="#1fd35d">BANK</text>
+  <text x="67" y="32" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="13" fill="#1fd35d">DEPOSIT</text>
+</svg>

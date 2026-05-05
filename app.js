@@ -174,19 +174,19 @@ function promoVisualChips(brand) {
 
 function walletLogosHTML() {
   const wallets = [
-    { cls: "wallet-bank", mark: "BANK", label: "Deposit", bn: "ব্যাংক" },
-    { cls: "wallet-bkash", mark: "bKash", label: "bKash", bn: "বিকাশ" },
-    { cls: "wallet-nagad", mark: "Nagad", label: "Nagad", bn: "নগদ" },
-    { cls: "wallet-rocket", mark: "Rocket", label: "Rocket", bn: "রকেট" },
-    { cls: "wallet-upay", mark: "upay", label: "Upay", bn: "উপায়" },
-    { cls: "wallet-crypto", mark: "USDT", label: "Crypto", bn: "ক্রিপ্টো" },
-    { cls: "wallet-ok", mark: "ok", label: "OK Wallet", bn: "ওকে ওয়ালেট" },
-    { cls: "wallet-sure", mark: "Sure", label: "SureCash", bn: "শিওরক্যাশ" },
-    { cls: "wallet-mcash", mark: "mCash", label: "mCash", bn: "এমক্যাশ" }
+    { cls: "wallet-bank", logo: "assets/wallets/bank-deposit.svg", label: "Bank Deposit", bn: "ব্যাংক ডিপোজিট" },
+    { cls: "wallet-bkash", logo: "assets/wallets/bkash.svg", label: "bKash", bn: "বিকাশ" },
+    { cls: "wallet-nagad", logo: "assets/wallets/nagad.svg", label: "Nagad", bn: "নগদ" },
+    { cls: "wallet-rocket", logo: "assets/wallets/rocket.svg", label: "Rocket", bn: "রকেট" },
+    { cls: "wallet-upay", logo: "assets/wallets/upay.svg", label: "Upay", bn: "উপায়" },
+    { cls: "wallet-crypto", logo: "assets/wallets/crypto.svg", label: "Crypto", bn: "ক্রিপ্টো" },
+    { cls: "wallet-ok", logo: "assets/wallets/ok-wallet.svg", label: "OK Wallet", bn: "ওকে ওয়ালেট" },
+    { cls: "wallet-sure", logo: "assets/wallets/surecash.svg", label: "SureCash", bn: "শিওরক্যাশ" },
+    { cls: "wallet-tap", logo: "assets/wallets/tap.svg", label: "tap", bn: "ট্যাপ" }
   ];
   return wallets.map((wallet) => {
     const name = currentLang() === "bn" ? wallet.bn : wallet.label;
-    return "<span class=\"wallet-logo " + wallet.cls + "\" title=\"" + wallet.label + "\"><span class=\"wallet-mark\">" + wallet.mark + "</span><span class=\"wallet-name\" data-bn=\"" + wallet.bn + "\" data-en=\"" + wallet.label + "\">" + name + "</span></span>";
+    return "<span class=\"wallet-logo " + wallet.cls + "\" title=\"" + wallet.label + "\"><img class=\"wallet-img\" src=\"" + assetPath(wallet.logo) + "\" alt=\"" + wallet.label + " logo\"><span class=\"wallet-name\" data-bn=\"" + wallet.bn + "\" data-en=\"" + wallet.label + "\">" + name + "</span></span>";
   }).join("");
 }
 

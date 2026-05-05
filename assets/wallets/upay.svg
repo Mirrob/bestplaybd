@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="112" height="38" viewBox="0 0 112 38" role="img" aria-label="Upay">
+  <rect width="112" height="38" fill="none"/>
+  <path d="M23 4c9 0 16 7 16 16s-7 16-16 16S7 29 7 20h10c0 4 3 7 6 7s6-3 6-7-3-7-6-7V4Z" fill="#ffd21f"/>
+  <path d="M5 15c2-6 7-11 14-11v9c-3 1-5 3-5 6H5v-4Z" fill="#1d5faf"/>
+  <text x="45" y="25" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="21" fill="#fff">upay</text>
+</svg>

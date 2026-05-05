@@ -66,6 +66,8 @@ function applyLanguage(lang) {
   translateCommonText(lang);
 
   localStorage.setItem("bestplaybd_lang", lang);
+  const signupChooser = document.getElementById("signupChooser");
+  if (signupChooser) signupChooser.remove();
 }
 
 const savedLang = localStorage.getItem("bestplaybd_lang") || "bn";
@@ -111,6 +113,78 @@ function assetPath(src) {
   return window.location.pathname.includes("/pages/") ? `../${src}` : src;
 }
 
+const FALLBACK_PROMOS = [
+  {
+    id: "mcw-first-deposit",
+    brand: "MCW",
+    tag_bn: "স্পোর্টস + ক্যাসিনো",
+    tag_en: "Sports + Casino",
+    title_bn: "MCW ফার্স্ট ডিপোজিট বোনাস",
+    title_en: "MCW First Deposit Bonus",
+    summary_bn: "Sports + Casino • 24/7 Withdrawal",
+    summary_en: "Sports + Casino • 24/7 Withdrawal",
+    updated: "Updated recently",
+    featured: true
+  },
+  {
+    id: "banglawin-slots",
+    brand: "BanglaWin",
+    tag_bn: "স্লটস প্রোমো",
+    tag_en: "Slots Promo",
+    title_bn: "BanglaWin স্লটস ও ক্যাসিনো প্রোমো",
+    title_en: "BanglaWin Slots and Casino Promo",
+    summary_bn: "Higher promos • ৳100 start",
+    summary_en: "Higher promos • ৳100 start",
+    updated: "Updated recently",
+    featured: true
+  },
+  {
+    id: "khelaghor-sports",
+    brand: "Khelaghor",
+    tag_bn: "স্পোর্টস ফোকাস",
+    tag_en: "Sports Focus",
+    title_bn: "Khelaghor স্পোর্টস ও ক্যাসিনো অফার",
+    title_en: "Khelaghor Sports and Casino Offer",
+    summary_bn: "Cricket • Football • Casino",
+    summary_en: "Cricket • Football • Casino",
+    updated: "Updated recently",
+    featured: true
+  },
+  {
+    id: "deshislots-casino",
+    brand: "Deshislots",
+    tag_bn: "দেশি স্লটস",
+    tag_en: "Deshi Slots",
+    title_bn: "Deshislots স্লটস, ক্যাসিনো ও ক্যাশব্যাক",
+    title_en: "Deshislots Slots, Casino and Cashback",
+    summary_bn: "Slots + Casino • Deshi vibes",
+    summary_en: "Slots + Casino • Deshi vibes",
+    updated: "Updated recently",
+    featured: true
+  },
+  {
+    id: "banglabet-start",
+    brand: "Banglabet",
+    tag_bn: "নতুনদের জন্য সহজ",
+    tag_en: "Beginner Friendly",
+    title_bn: "Banglabet বোনাস ও সহজ শুরু",
+    title_en: "Banglabet Bonus and Easy Start",
+    summary_bn: "Beginner friendly • ৳100 start",
+    summary_en: "Beginner friendly • ৳100 start",
+    updated: "Updated recently",
+    featured: true
+  }
+];
+
+function brandSlug(brand) {
+  const key = String(brand || "mcw").toLowerCase().replace(/[^a-z0-9]/g, "");
+  if (key.includes("banglawin")) return "banglawin";
+  if (key.includes("khelaghor")) return "khelaghor";
+  if (key.includes("deshislots")) return "deshislots";
+  if (key.includes("banglabet")) return "banglabet";
+  return "mcw";
+}
+
 function walletLogosHTML() {
   const wallets = [
     { cls: "wallet-bank", mark: "BANK", label: "Deposit", bn: "ব্যাংক" },
@@ -136,7 +210,7 @@ function enhanceWalletLogos() {
   });
 }
 
-function promoCardHTML(promo, data) {
+function legacyPromoCardHTML(promo, data) {
   const lang = currentLang();
   const tag = promo[`tag_${lang}`];
   const title = promo[`title_${lang}`];
@@ -166,6 +240,41 @@ function promoCardHTML(promo, data) {
   `;
 }
 
+function promoCardHTML(promo, data) {
+  const lang = currentLang();
+  const tag = promo[`tag_${lang}`] || promo.tag_en || promo.brand || "Promo";
+  const title = promo[`title_${lang}`] || promo.title_en || `${promo.brand || "Brand"} Promo`;
+  const summary = promo[`summary_${lang}`] || promo.summary_en || "Sports + Casino - 24/7 Withdrawal";
+  const detailsText = lang === "bn" ? "প্রোমো ডিটেইলস" : "Promo Details";
+  const signupText = lang === "bn" ? "বোনাস ক্লেইম করুন" : "Claim Bonus";
+  const brandName = promo.brand || "MCW";
+  const targetLink = getSignupLink(brandName);
+  const detailsHref = window.location.pathname.includes("/pages/") ? "promos.html" : "pages/promos.html";
+  const slug = brandSlug(brandName);
+  return `
+    <article class="promo-banner promo-${slug} dynamic-promo-card">
+      <div class="promo-left">
+        <div class="promo-meta">
+          <span class="promo-brand">${brandName}</span>
+          <span class="promo-tag">${tag}</span>
+          <span class="promo-updated">${promo.updated || "Updated recently"}</span>
+        </div>
+        <h3>${title}</h3>
+        <p class="promo-summary">${summary}</p>
+        <div class="promo-actions">
+          <a class="btn btn-primary" href="${targetLink}" data-signup-brand="${brandName}" target="_blank" rel="nofollow noopener">${signupText}</a>
+          <a class="btn btn-secondary" href="${detailsHref}">${detailsText}</a>
+        </div>
+      </div>
+      <div class="promo-right" aria-hidden="true">
+        <span class="promo-orb orb-one"></span>
+        <span class="promo-orb orb-two"></span>
+        <span class="promo-chip">${brandName.slice(0, 2).toUpperCase()}</span>
+      </div>
+    </article>
+  `;
+}
+
 async function renderPromosPage() {
   const grid = document.getElementById("promoSyncGrid");
   if (!grid) return;
@@ -173,7 +282,7 @@ async function renderPromosPage() {
     const data = await loadPromoData();
     grid.innerHTML = data.promos.map((promo) => promoCardHTML(promo, data)).join("");
   } catch (error) {
-    grid.innerHTML = `<div class="card empty-state"><h3>Unable to load promos</h3><p>Please try again later.</p></div>`;
+    grid.innerHTML = FALLBACK_PROMOS.map((promo) => promoCardHTML(promo, { signup_link: SIGNUP_URL })).join("");
   }
 }
 
@@ -299,7 +408,12 @@ async function renderHomeBrandSections() {
     }
     if (allPromoGrid) allPromoGrid.innerHTML = data.promos.map((promo) => promoCardHTML(promo, data)).join("");
   } catch (error) {
-    [brandGrid, featuredGrid, allPromoGrid].filter(Boolean).forEach(el => { el.innerHTML = `<div class="card empty-state"><h3>Unable to load data</h3></div>`; });
+    if (featuredGrid) {
+      featuredGrid.classList.add("home-promo-showcase");
+      featuredGrid.innerHTML = FALLBACK_PROMOS.map((promo) => promoCardHTML(promo, { signup_link: SIGNUP_URL })).join("");
+    }
+    if (allPromoGrid) allPromoGrid.innerHTML = FALLBACK_PROMOS.map((promo) => promoCardHTML(promo, { signup_link: SIGNUP_URL })).join("");
+    if (brandGrid && !brandGrid.children.length) brandGrid.innerHTML = `<div class="card empty-state"><h3>Unable to load data</h3></div>`;
   }
 }
 async function hydrateTelegramLinks() {
@@ -325,6 +439,113 @@ async function renderDynamicContent() {
     hydrateTelegramLinks(),
     renderHomeBrandSections()
   ]);
+  enhanceFooterLogo();
+  bindSignupChooser();
 }
 
-renderDynamicContent().then(applySignupLinks);
+function signupBrands() {
+  return [
+    { brand: "MCW", best_bn: "স্পোর্টস + ক্যাসিনো", best_en: "Sports + Casino", deposit: "৳200", rating: "4.9/5" },
+    { brand: "BanglaWin", best_bn: "স্লটস + বেশি প্রোমো", best_en: "Slots + Higher Promos", deposit: "৳100", rating: "4.8/5" },
+    { brand: "Khelaghor", best_bn: "স্পোর্টস + ক্যাসিনো", best_en: "Sports + Casino", deposit: "৳100", rating: "4.7/5" },
+    { brand: "Deshislots", best_bn: "স্লটস + দেশি ভাইব", best_en: "Slots + Deshi Vibes", deposit: "৳100", rating: "4.7/5" },
+    { brand: "Banglabet", best_bn: "নতুনদের জন্য সহজ", best_en: "Beginner Friendly", deposit: "৳100", rating: "4.7/5" }
+  ];
+}
+
+function ensureSignupChooser() {
+  if (document.getElementById("signupChooser")) return;
+  const lang = currentLang();
+  const brands = signupBrands();
+  const modal = document.createElement("div");
+  modal.id = "signupChooser";
+  modal.className = "signup-modal-backdrop";
+  modal.hidden = true;
+  modal.innerHTML = `
+    <div class="signup-modal" role="dialog" aria-modal="true" aria-labelledby="signupChooserTitle">
+      <button class="signup-close" type="button" data-close-signup aria-label="Close">×</button>
+      <span class="section-kicker">${lang === "bn" ? "সাইন আপ" : "Sign Up"}</span>
+      <h2 id="signupChooserTitle">${lang === "bn" ? "আপনার পছন্দের ব্র্যান্ড বেছে নিন" : "Choose Your Preferred Brand"}</h2>
+      <p>${lang === "bn" ? "সব ৫টি ব্র্যান্ডের সাইন আপ লিংক নিচে রাখা হয়েছে। যেটা আপনার জন্য ভালো মনে হয় সেটিতে এগিয়ে যান।" : "All 5 brand signup links are here. Pick the one that fits your preference and continue."}</p>
+      <div class="signup-brand-grid">
+        ${brands.map((item, index) => `
+          <a class="signup-brand-option" href="${getSignupLink(item.brand)}" data-signup-brand="${item.brand}" target="_blank" rel="nofollow noopener">
+            <span class="rank-badge">#${index + 1}</span>
+            <strong>${item.brand}</strong>
+            <small>${lang === "bn" ? item.best_bn : item.best_en}</small>
+            <em>${item.deposit} · 24/7 · ★ ${item.rating}</em>
+            <b>${lang === "bn" ? "সাইন আপ" : "Sign Up"}</b>
+          </a>
+        `).join("")}
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+}
+
+function openSignupChooser() {
+  ensureSignupChooser();
+  const modal = document.getElementById("signupChooser");
+  if (modal) modal.hidden = false;
+}
+
+function closeSignupChooser() {
+  const modal = document.getElementById("signupChooser");
+  if (modal) modal.hidden = true;
+}
+
+function bindSignupChooser() {
+  ensureSignupChooser();
+  ensureFloatingSignup();
+  document.querySelectorAll("[data-open-signup]").forEach((button) => {
+    if (button.dataset.signupBound) return;
+    button.dataset.signupBound = "true";
+    button.addEventListener("click", openSignupChooser);
+  });
+  document.querySelectorAll("[data-close-signup]").forEach((button) => {
+    if (button.dataset.closeBound) return;
+    button.dataset.closeBound = "true";
+    button.addEventListener("click", closeSignupChooser);
+  });
+  const modal = document.getElementById("signupChooser");
+  if (modal && !modal.dataset.backdropBound) {
+    modal.dataset.backdropBound = "true";
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) closeSignupChooser();
+    });
+  }
+}
+
+function ensureFloatingSignup() {
+  const isHome = !window.location.pathname.includes("/pages/");
+  if (!isHome || document.querySelector(".signup-float")) return;
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "signup-float";
+  button.setAttribute("data-open-signup", "");
+  button.setAttribute("data-bn", "সাইন আপ");
+  button.setAttribute("data-en", "Sign Up");
+  button.textContent = currentLang() === "bn" ? "সাইন আপ" : "Sign Up";
+  document.body.appendChild(button);
+}
+
+function enhanceFooterLogo() {
+  document.querySelectorAll(".site-footer .footer-wrap").forEach((footer) => {
+    if (footer.querySelector(".footer-brand-logo")) return;
+    const firstBlock = footer.querySelector("div:first-child");
+    if (!firstBlock) return;
+    const logo = document.createElement("a");
+    logo.className = "footer-brand-logo";
+    logo.href = window.location.pathname.includes("/pages/") ? "../index.html" : "index.html";
+    logo.innerHTML = `<img src="${assetPath("assets/logo.svg")}" alt="BestPlayBD logo"><span><strong>BestPlayBD</strong><small>BD Bonus Compare</small></span>`;
+    firstBlock.prepend(logo);
+    const duplicateBrand = firstBlock.querySelector(":scope > strong");
+    if (duplicateBrand) duplicateBrand.classList.add("footer-text-brand");
+  });
+}
+
+renderDynamicContent().then(() => {
+  applySignupLinks();
+  enhanceFooterLogo();
+  bindSignupChooser();
+});

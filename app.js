@@ -9,19 +9,26 @@ function applySignupLinks() {
 }
 
 const COMMON_TRANSLATIONS = [
-  ["Quick links:", "দ্রুত লিংক:"], ["Top Brands", "টপ ব্র্যান্ড"], ["Compare", "তুলনা"], ["Payments", "পেমেন্ট"], ["Promos", "প্রোমো"],
-  ["Join Telegram", "টেলিগ্রাম জয়েন করুন"], ["View top brands", "টপ ব্র্যান্ড দেখুন"], ["Quick Shortlist", "দ্রুত চেকলিস্ট"],
-  ["Minimum deposit", "মিনিমাম ডিপোজিট"], ["Payment support", "পেমেন্ট সাপোর্ট"], ["Withdrawal availability", "উইথড্র সুবিধা"], ["Bonus clarity", "বোনাস নিয়ম পরিষ্কার"],
-  ["Top 5 Comparison Table", "টপ ৫ তুলনা টেবিল"], ["Brand", "ব্র্যান্ড"], ["Min Deposit", "মিন ডিপোজিট"], ["Withdraw", "উইথড্র"], ["Payment", "পেমেন্ট"], ["Rating", "রেটিং"], ["Action", "অ্যাকশন"],
-  ["Payment Method Guide", "পেমেন্ট মেথড গাইড"], ["Ranking Method", "র‍্যাঙ্কিং পদ্ধতি"], ["Quick Navigation", "দ্রুত নেভিগেশন"], ["Home", "হোম"], ["All Promos", "সব প্রোমো"], ["Deposit Guide", "ডিপোজিট গাইড"],
-  ["Brand-by-brand Explanation", "প্রতিটি ব্র্যান্ডের ব্যাখ্যা"], ["FAQ", "সাধারণ প্রশ্ন"], ["Which is best?", "কোনটি সেরা?"], ["Minimum deposit?", "মিনিমাম ডিপোজিট কত?"], ["Payment methods?", "পেমেন্ট মেথড কী?"],
-  ["Claim Bonus", "বোনাস ক্লেইম করুন"], ["Play Now", "এখন খেলুন"], ["Sign Up", "সাইন আপ"], ["Read Review", "রিভিউ পড়ুন"], ["Review", "রিভিউ"], ["Compare All Brands", "সব ব্র্যান্ড তুলনা করুন"],
-  ["Pros and Cons", "ভালো দিক ও সীমাবদ্ধতা"], ["Pros", "ভালো দিক"], ["Cons", "সীমাবদ্ধতা"], ["Check First", "আগে চেক করুন"],
-  ["Overall", "সামগ্রিক"], ["Best For", "যাদের জন্য ভালো"], ["Mobile-friendly flow", "মোবাইলে ব্যবহার সহজ"], ["BD payment methods", "বাংলাদেশি পেমেন্ট মেথড"], ["24/7 withdrawal support", "২৪/৭ উইথড্র সাপোর্ট"],
-  ["Final terms must be checked on signup page", "চূড়ান্ত নিয়ম সাইন আপ পেজে দেখে নিন"], ["Promo availability can change", "প্রোমো সময় অনুযায়ী বদলাতে পারে"],
-  ["MCW is strong for Sports + Casino. BanglaWin is strong for slots and higher promos.", "Sports + Casino এর জন্য MCW ভালো। Slots ও বেশি প্রোমোর জন্য BanglaWin ভালো।"],
-  ["MCW ৳200. BanglaWin, Khelaghor, Deshislots and Banglabet ৳100.", "MCW মিনিমাম ৳২০০। BanglaWin, Khelaghor, Deshislots ও Banglabet মিনিমাম ৳১০০।"],
-  ["Use the comparison table.", "তুলনা টেবিল দেখে ব্র্যান্ড বেছে নিন।"], ["Check turnover and expiry.", "টার্নওভার ও মেয়াদ আগে চেক করুন।"], ["Check cashier methods.", "ক্যাশিয়ার পেজে পেমেন্ট মেথড দেখুন।"], ["Get fast updates.", "দ্রুত আপডেট পান।"]
+  ["Quick links:", "দ্রুত লিংক:"], ["Top Brands", "টপ ব্র্যান্ড"], ["Compare", "তুলনা"], ["Payments", "পেমেন্ট"], ["Promos", "প্রমোশন"],
+  ["Join Telegram", "Telegram-এ যোগ দিন"], ["View top brands", "টপ ব্র্যান্ড দেখুন"], ["Quick Shortlist", "দ্রুত তালিকা"],
+  ["Minimum deposit", "ন্যূনতম ডিপোজিট"], ["Payment support", "পেমেন্ট সুবিধা"], ["Withdrawal availability", "উত্তোলন সুবিধা"], ["Bonus clarity", "বোনাসের নিয়ম পরিষ্কার"], ["Withdrawal", "উত্তোলন"], ["Reviewed Brands", "রিভিউ করা ব্র্যান্ড"], ["BD Payments", "বাংলাদেশি পেমেন্ট"],
+  ["Top 5 Comparison Table", "টপ ৫ তুলনা টেবিল"], ["Brand", "ব্র্যান্ড"], ["Min Deposit", "ন্যূনতম ডিপোজিট"], ["Withdraw", "উত্তোলন"], ["Payment", "পেমেন্ট"], ["Rating", "রেটিং"], ["Action", "অ্যাকশন"],
+  ["Payment Method Guide", "পেমেন্ট মেথড গাইড"], ["Ranking Method", "র‍্যাঙ্কিং পদ্ধতি"], ["Quick Navigation", "দ্রুত নেভিগেশন"], ["Home", "হোম"], ["All Promos", "সব প্রমোশন"], ["Deposit Guide", "ডিপোজিট গাইড"],
+  ["Brand-by-brand Explanation", "প্রতিটি ব্র্যান্ডের বিস্তারিত"], ["FAQ", "সাধারণ প্রশ্ন"], ["Which is best?", "কোনটি সেরা?"], ["Minimum deposit?", "ন্যূনতম ডিপোজিট কত?"], ["Payment methods?", "পেমেন্ট মেথড কী?"],
+  ["Claim Bonus", "বোনাস ক্লেইম করুন"], ["Play Now", "এখনই খেলুন"], ["Sign Up", "সাইন আপ করুন"], ["Read Review", "রিভিউ পড়ুন"], ["Read review", "রিভিউ পড়ুন"], ["View details", "বিস্তারিত দেখুন"], ["Review", "রিভিউ"], ["Compare All Brands", "সব ব্র্যান্ড তুলনা করুন"],
+  ["Pros and Cons", "ভালো দিক ও আগে দেখার বিষয়"], ["Pros", "ভালো দিক"], ["Cons", "সীমাবদ্ধতা"], ["Check First", "আগে দেখুন"], ["Check", "আগে দেখুন"],
+  ["Overall", "সামগ্রিক"], ["Best For", "যাদের জন্য ভালো"], ["Mobile-friendly flow", "মোবাইলে ব্যবহার সহজ"], ["BD payment methods", "বাংলাদেশি পেমেন্ট মেথড"], ["24/7 withdrawal support", "২৪/৭ উত্তোলন সাপোর্ট"],
+  ["Final terms must be checked on signup page", "চূড়ান্ত নিয়ম সাইন আপ পেজে দেখে নিন"], ["Promo availability can change", "প্রমোশন সময় অনুযায়ী বদলাতে পারে"],
+  ["MCW is strong for Sports + Casino. BanglaWin is strong for slots and higher promos.", "স্পোর্টস ও ক্যাসিনোর জন্য MCW শক্তিশালী। স্লট ক্যাসিনো ও বেশি প্রমোশনের জন্য BanglaWin ভালো।"],
+  ["MCW ৳200. BanglaWin, Khelaghor, Deshislots and Banglabet ৳100.", "MCW ন্যূনতম ৳২০০। BanglaWin, Khelaghor, Deshislots ও Banglabet ন্যূনতম ৳১০০।"],
+  ["Use the comparison table.", "তুলনা টেবিল দেখে ব্র্যান্ড বেছে নিন।"], ["Check turnover and expiry.", "টার্নওভার ও মেয়াদ আগে দেখে নিন।"], ["Check cashier methods.", "ক্যাশিয়ার পেজে পেমেন্ট সুবিধা দেখে নিন।"], ["Get fast updates.", "দ্রুত আপডেট পান।"],
+  ["MCW — Sports + Casino", "MCW — স্পোর্টস + ক্যাসিনো"], ["BanglaWin — Slots + Higher Promos", "BanglaWin — স্লট + বেশি প্রমোশন"], ["Khelaghor — Sports focused", "Khelaghor — স্পোর্টস-কেন্দ্রিক"],
+  ["Sports + Casino", "স্পোর্টস + ক্যাসিনো"], ["Slots Casino + Higher Promos", "স্লট ক্যাসিনো + বেশি প্রমোশন"], ["Slots + Casino + Deshi vibes", "স্লট + ক্যাসিনো + দেশি অভিজ্ঞতা"], ["Slots + Casino + Beginner friendly", "স্লট + ক্যাসিনো + নতুনদের জন্য সহজ"], ["Beginner Friendly", "নতুনদের জন্য সহজ"],
+  ["Strong sports + casino", "স্পোর্টস ও ক্যাসিনোতে শক্তিশালী"], ["Wide BD payments", "বাংলাদেশি পেমেন্ট সুবিধা বিস্তৃত"], ["Minimum deposit ৳200", "ন্যূনতম ডিপোজিট ৳২০০"], ["Promo terms can change", "প্রমোশনের নিয়ম বদলাতে পারে"],
+  ["Slots casino focus", "স্লট ক্যাসিনোতে বেশি ফোকাস"], ["Beginner-friendly ৳100 start", "৳১০০ থেকে নতুনদের জন্য সহজ শুরু"], ["Higher promo positioning", "বেশি প্রমোশনের জন্য ভালো"], ["Eligible games", "যোগ্য গেম দেখে নিন"], ["Turnover rules", "টার্নওভারের নিয়ম"],
+  ["Sports focused", "স্পোর্টস-কেন্দ্রিক"], ["Cricket/football friendly", "ক্রিকেট/ফুটবল ব্যবহারকারীদের জন্য ভালো"], ["Simple payment flow", "সহজ পেমেন্ট প্রক্রিয়া"], ["Odds rules", "অডসের নিয়ম"], ["Promo expiry", "প্রমোশনের মেয়াদ"],
+  ["Deshi vibe", "দেশি অভিজ্ঞতা"], ["Cashback-style promo fit", "ক্যাশব্যাক ধরনের প্রমোশনের জন্য ভালো"], ["Valid games", "যে গেমে প্রমোশন প্রযোজ্য"], ["Campaign availability", "ক্যাম্পেইন চালু আছে কি না দেখুন"],
+  ["Quick Scores", "দ্রুত স্কোর"], ["Quick Score", "দ্রুত স্কোর"], ["What to Check in a Review", "রিভিউ পড়ার সময় কী দেখবেন"], ["Quick Action", "দ্রুত এগিয়ে যান"], ["Call to Action", "পরবর্তী ধাপ"]
 ];
 
 function translateCommonText(lang) {
@@ -114,66 +121,11 @@ function assetPath(src) {
 }
 
 const FALLBACK_PROMOS = [
-  {
-    id: "mcw-first-deposit",
-    brand: "MCW",
-    tag_bn: "স্পোর্টস + ক্যাসিনো",
-    tag_en: "Sports + Casino",
-    title_bn: "MCW ফার্স্ট ডিপোজিট বোনাস",
-    title_en: "MCW First Deposit Bonus",
-    summary_bn: "Sports + Casino • 24/7 Withdrawal",
-    summary_en: "Sports + Casino • 24/7 Withdrawal",
-    updated: "Updated recently",
-    featured: true
-  },
-  {
-    id: "banglawin-slots",
-    brand: "BanglaWin",
-    tag_bn: "স্লটস প্রোমো",
-    tag_en: "Slots Promo",
-    title_bn: "BanglaWin স্লটস ও ক্যাসিনো প্রোমো",
-    title_en: "BanglaWin Slots and Casino Promo",
-    summary_bn: "Higher promos • ৳100 start",
-    summary_en: "Higher promos • ৳100 start",
-    updated: "Updated recently",
-    featured: true
-  },
-  {
-    id: "khelaghor-sports",
-    brand: "Khelaghor",
-    tag_bn: "স্পোর্টস ফোকাস",
-    tag_en: "Sports Focus",
-    title_bn: "Khelaghor স্পোর্টস ও ক্যাসিনো অফার",
-    title_en: "Khelaghor Sports and Casino Offer",
-    summary_bn: "Cricket • Football • Casino",
-    summary_en: "Cricket • Football • Casino",
-    updated: "Updated recently",
-    featured: true
-  },
-  {
-    id: "deshislots-casino",
-    brand: "Deshislots",
-    tag_bn: "দেশি স্লটস",
-    tag_en: "Deshi Slots",
-    title_bn: "Deshislots স্লটস, ক্যাসিনো ও ক্যাশব্যাক",
-    title_en: "Deshislots Slots, Casino and Cashback",
-    summary_bn: "Slots + Casino • Deshi vibes",
-    summary_en: "Slots + Casino • Deshi vibes",
-    updated: "Updated recently",
-    featured: true
-  },
-  {
-    id: "banglabet-start",
-    brand: "Banglabet",
-    tag_bn: "নতুনদের জন্য সহজ",
-    tag_en: "Beginner Friendly",
-    title_bn: "Banglabet বোনাস ও সহজ শুরু",
-    title_en: "Banglabet Bonus and Easy Start",
-    summary_bn: "Beginner friendly • ৳100 start",
-    summary_en: "Beginner friendly • ৳100 start",
-    updated: "Updated recently",
-    featured: true
-  }
+  { id: "mcw-first-deposit", brand: "MCW", tag_bn: "স্পোর্টস + ক্যাসিনো", tag_en: "Sports + Casino", title_bn: "MCW ফার্স্ট ডিপোজিট বোনাস", title_en: "MCW First Deposit Bonus", summary_bn: "স্পোর্টস + ক্যাসিনো • ২৪/৭ উত্তোলন", summary_en: "Sports + Casino • 24/7 Withdrawal", updated: "Updated recently", featured: true },
+  { id: "banglawin-slots", brand: "BanglaWin", tag_bn: "স্লট প্রমোশন", tag_en: "Slots Promo", title_bn: "BanglaWin স্লট ও ক্যাসিনো প্রমোশন", title_en: "BanglaWin Slots and Casino Promo", summary_bn: "বেশি প্রমোশন • ৳১০০ থেকে শুরু", summary_en: "Higher promos • ৳100 start", updated: "Updated recently", featured: true },
+  { id: "khelaghor-sports", brand: "Khelaghor", tag_bn: "স্পোর্টস-কেন্দ্রিক", tag_en: "Sports Focus", title_bn: "Khelaghor স্পোর্টস ও ক্যাসিনো অফার", title_en: "Khelaghor Sports and Casino Offer", summary_bn: "ক্রিকেট • ফুটবল • ক্যাসিনো", summary_en: "Cricket • Football • Casino", updated: "Updated recently", featured: true },
+  { id: "deshislots-casino", brand: "Deshislots", tag_bn: "দেশি স্লট", tag_en: "Deshi Slots", title_bn: "Deshislots স্লট, ক্যাসিনো ও ক্যাশব্যাক", title_en: "Deshislots Slots, Casino and Cashback", summary_bn: "স্লট + ক্যাসিনো • দেশি অভিজ্ঞতা", summary_en: "Slots + Casino • Deshi vibes", updated: "Updated recently", featured: true },
+  { id: "banglabet-start", brand: "Banglabet", tag_bn: "নতুনদের জন্য সহজ", tag_en: "Beginner Friendly", title_bn: "Banglabet বোনাস ও সহজ শুরু", title_en: "Banglabet Bonus and Easy Start", summary_bn: "নতুনদের জন্য সহজ • ৳১০০ থেকে শুরু", summary_en: "Beginner friendly • ৳100 start", updated: "Updated recently", featured: true }
 ];
 
 function brandSlug(brand) {
@@ -183,6 +135,18 @@ function brandSlug(brand) {
   if (key.includes("deshislots")) return "deshislots";
   if (key.includes("banglabet")) return "banglabet";
   return "mcw";
+}
+
+
+function promoVisualChips(brand) {
+  const visuals = {
+    mcw: ["24/7", "SPORTS", "CASINO"],
+    banglawin: ["SLOTS", "BONUS", "৳100+"],
+    khelaghor: ["SPORTS", "BD", "24/7"],
+    deshislots: ["SLOTS", "CASH", "BD"],
+    banglabet: ["START", "৳100+", "BD"]
+  };
+  return visuals[brandSlug(brand)] || visuals.mcw;
 }
 
 function walletLogosHTML() {
@@ -215,7 +179,7 @@ function legacyPromoCardHTML(promo, data) {
   const tag = promo[`tag_${lang}`];
   const title = promo[`title_${lang}`];
   const summary = promo[`summary_${lang}`];
-  const detailsText = lang === "bn" ? "প্রোমো ডিটেইলস" : "Promo Details";
+  const detailsText = lang === "bn" ? "প্রমোর বিস্তারিত" : "Promo Details";
   const signupText = lang === "bn" ? "বোনাস ক্লেইম করুন" : "Claim Bonus";
   const targetLink = promoLink(promo, data);
   const brand = promo.brand ? `<span class="promo-brand">${promo.brand}</span>` : "";
@@ -245,9 +209,10 @@ function promoCardHTML(promo, data) {
   const tag = promo[`tag_${lang}`] || promo.tag_en || promo.brand || "Promo";
   const title = promo[`title_${lang}`] || promo.title_en || `${promo.brand || "Brand"} Promo`;
   const summary = promo[`summary_${lang}`] || promo.summary_en || "Sports + Casino - 24/7 Withdrawal";
-  const detailsText = lang === "bn" ? "প্রোমো ডিটেইলস" : "Promo Details";
+  const detailsText = lang === "bn" ? "প্রমোর বিস্তারিত" : "Promo Details";
   const signupText = lang === "bn" ? "বোনাস ক্লেইম করুন" : "Claim Bonus";
   const brandName = promo.brand || "MCW";
+  const visualChips = promoVisualChips(brandName);
   const targetLink = getSignupLink(brandName);
   const detailsHref = window.location.pathname.includes("/pages/") ? "promos.html" : "pages/promos.html";
   const slug = brandSlug(brandName);
@@ -269,7 +234,9 @@ function promoCardHTML(promo, data) {
       <div class="promo-right" aria-hidden="true">
         <span class="promo-orb orb-one"></span>
         <span class="promo-orb orb-two"></span>
-        <span class="promo-chip">${brandName.slice(0, 2).toUpperCase()}</span>
+        <span class="promo-chip">${visualChips[0]}</span>
+        <span class="promo-mini-chip promo-mini-one">${visualChips[1]}</span>
+        <span class="promo-mini-chip promo-mini-two">${visualChips[2]}</span>
       </div>
     </article>
   `;
@@ -306,7 +273,7 @@ async function renderPromoDetailPage() {
             <h1>${promo[`title_${lang}`]}</h1>
             <p>${promo[`summary_${lang}`]}</p>
             <div class="detail-actions">
-              <a class="btn btn-primary" href="${promoLink(promo, data)}" data-signup-brand="${promo.brand || 'MCW'}" target="_blank" rel="nofollow noopener">${promo[`cta_${lang}`] || (lang === "bn" ? "এখন সাইন আপ" : "Sign Up Now")}</a>
+              <a class="btn btn-primary" href="${promoLink(promo, data)}" data-signup-brand="${promo.brand || 'MCW'}" target="_blank" rel="nofollow noopener">${promo[`cta_${lang}`] || (lang === "bn" ? "সাইন আপ করুন" : "Sign Up Now")}</a>
               <a class="btn btn-secondary" href="https://t.me/bestplaybd_win_big" target="_blank" rel="nofollow noopener">${lang === "bn" ? "টেলিগ্রাম আপডেট" : "Telegram Updates"}</a>
             </div>
           </div>
@@ -334,14 +301,14 @@ async function renderPromoDetailPage() {
               <div class="info-list">
                 <div class="link-pill"><strong>${lang === "bn" ? "স্ট্যাটাস" : "Status"}</strong><span>${promo.updated}</span></div>
                 <div class="link-pill"><strong>${lang === "bn" ? "টাইপ" : "Type"}</strong><span>${promo[`tag_${lang}`]}</span></div>
-                <div class="link-pill"><strong>${lang === "bn" ? "কল টু অ্যাকশন" : "Call to Action"}</strong><span>${promo[`cta_${lang}`] || (lang === "bn" ? "এখন সাইন আপ" : "Sign Up Now")}</span></div>
+                <div class="link-pill"><strong>${lang === "bn" ? "পরবর্তী ধাপ" : "Call to Action"}</strong><span>${promo[`cta_${lang}`] || (lang === "bn" ? "সাইন আপ করুন" : "Sign Up Now")}</span></div>
               </div>
             </div>
           </div>
 
           <div class="detail-stack">
             <div class="content-shell">
-              <h2>${lang === "bn" ? "কীভাবে ব্যবহার করবেন" : "How to Use This Page"}</h2>
+              <h2>${lang === "bn" ? "কীভাবে প্রমোটি দেখবেন" : "How to Use This Page"}</h2>
               <ol>
                 <li>${lang === "bn" ? "অফারের সারাংশ আগে দেখুন" : "Read the promo summary first"}</li>
                 <li>${lang === "bn" ? "ব্যানার ও ব্যাখ্যা মিলিয়ে বুঝুন" : "Match the banner with the short explanation"}</li>
@@ -351,10 +318,10 @@ async function renderPromoDetailPage() {
             </div>
 
             <div class="content-shell">
-              <h2>${lang === "bn" ? "দ্রুত একশন" : "Quick Action"}</h2>
+              <h2>${lang === "bn" ? "দ্রুত এগিয়ে যান" : "Quick Action"}</h2>
               <div class="detail-actions">
-                <a class="btn btn-primary" href="${promoLink(promo, data)}" data-signup-brand="${promo.brand || 'MCW'}" target="_blank" rel="nofollow noopener">${promo[`cta_${lang}`] || (lang === "bn" ? "এখন সাইন আপ" : "Sign Up Now")}</a>
-                <a class="btn btn-secondary" href="promos.html">${lang === "bn" ? "সব প্রমো দেখুন" : "See All Promos"}</a>
+                <a class="btn btn-primary" href="${promoLink(promo, data)}" data-signup-brand="${promo.brand || 'MCW'}" target="_blank" rel="nofollow noopener">${promo[`cta_${lang}`] || (lang === "bn" ? "সাইন আপ করুন" : "Sign Up Now")}</a>
+                <a class="btn btn-secondary" href="promos.html">${lang === "bn" ? "সব প্রমোশন দেখুন" : "See All Promos"}</a>
               </div>
             </div>
           </div>
@@ -386,7 +353,7 @@ async function renderHomeBrandSections() {
           "<h3>" + brand.brand + "</h3>" +
           "<p>" + (brand[`best_for_${lang}`] || brand.best_for_en || "Recommended") + "</p>" +
           "<div class=\"brand-facts\"><span>" + (brand.min_deposit || "৳100") + "</span><span>" + (brand[`withdraw_${lang}`] || brand.withdraw_en || "24/7") + "</span><span class=\"brand-payment-pill\">bKash · Nagad · Rocket · Upay · Bank · USDT</span></div>" +
-          "<div class=\"card-actions\"><a class=\"btn btn-primary\" href=\"" + brandLink(brand, data) + "\" data-signup-brand=\"" + brand.brand + "\" target=\"_blank\" rel=\"nofollow noopener\">" + (lang === "bn" ? "সাইন আপ" : "Sign Up") + "</a><a class=\"btn btn-secondary\" href=\"" + reviewPath + "\">" + (lang === "bn" ? "রিভিউ" : "Review") + "</a></div>" +
+          "<div class=\"card-actions\"><a class=\"btn btn-primary\" href=\"" + brandLink(brand, data) + "\" data-signup-brand=\"" + brand.brand + "\" target=\"_blank\" rel=\"nofollow noopener\">" + (lang === "bn" ? "সাইন আপ করুন" : "Sign Up") + "</a><a class=\"btn btn-secondary\" href=\"" + reviewPath + "\">" + (lang === "bn" ? "রিভিউ" : "Review") + "</a></div>" +
         "</article>";
       }).join("");
     }
@@ -398,7 +365,7 @@ async function renderHomeBrandSections() {
           "<td data-label=\"Withdraw\">" + (brand[`withdraw_${lang}`] || brand.withdraw_en || "24/7") + "</td>" +
           "<td data-label=\"Payment\"><span class=\"payment-inline\">bKash · Nagad · Rocket · Upay · Bank · USDT</span></td>" +
           "<td data-label=\"Rating\">★ " + (brand.rating || "4.5/5") + "</td>" +
-          "<td data-label=\"Action\"><a class=\"mini-cta\" href=\"" + brandLink(brand, data) + "\" data-signup-brand=\"" + brand.brand + "\" target=\"_blank\" rel=\"nofollow noopener\">" + (lang === "bn" ? "সাইন আপ" : "Sign Up") + "</a></td>" +
+          "<td data-label=\"Action\"><a class=\"mini-cta\" href=\"" + brandLink(brand, data) + "\" data-signup-brand=\"" + brand.brand + "\" target=\"_blank\" rel=\"nofollow noopener\">" + (lang === "bn" ? "সাইন আপ করুন" : "Sign Up") + "</a></td>" +
         "</tr>"
       ).join("");
     }
@@ -431,6 +398,22 @@ async function hydrateTelegramLinks() {
   }
 }
 
+
+function enhanceGamePlayButtons() {
+  const lang = currentLang();
+  document.querySelectorAll(".game-provider-section .game-section-head").forEach((head) => {
+    if (head.querySelector(".game-play-action")) return;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "game-play-action mini-cta";
+    button.setAttribute("data-open-signup", "");
+    button.setAttribute("data-bn", "এখনই খেলুন");
+    button.setAttribute("data-en", "Play Now");
+    button.textContent = lang === "bn" ? "এখনই খেলুন" : "Play Now";
+    head.appendChild(button);
+  });
+}
+
 async function renderDynamicContent() {
   enhanceWalletLogos();
   await Promise.all([
@@ -440,15 +423,16 @@ async function renderDynamicContent() {
     renderHomeBrandSections()
   ]);
   enhanceFooterLogo();
+  enhanceGamePlayButtons();
   bindSignupChooser();
 }
 
 function signupBrands() {
   return [
     { brand: "MCW", best_bn: "স্পোর্টস + ক্যাসিনো", best_en: "Sports + Casino", deposit: "৳200", rating: "4.9/5" },
-    { brand: "BanglaWin", best_bn: "স্লটস + বেশি প্রোমো", best_en: "Slots + Higher Promos", deposit: "৳100", rating: "4.8/5" },
+    { brand: "BanglaWin", best_bn: "স্লট + বেশি প্রমোশন", best_en: "Slots + Higher Promos", deposit: "৳100", rating: "4.8/5" },
     { brand: "Khelaghor", best_bn: "স্পোর্টস + ক্যাসিনো", best_en: "Sports + Casino", deposit: "৳100", rating: "4.7/5" },
-    { brand: "Deshislots", best_bn: "স্লটস + দেশি ভাইব", best_en: "Slots + Deshi Vibes", deposit: "৳100", rating: "4.7/5" },
+    { brand: "Deshislots", best_bn: "স্লট + দেশি অভিজ্ঞতা", best_en: "Slots + Deshi Vibes", deposit: "৳100", rating: "4.7/5" },
     { brand: "Banglabet", best_bn: "নতুনদের জন্য সহজ", best_en: "Beginner Friendly", deposit: "৳100", rating: "4.7/5" }
   ];
 }
@@ -464,7 +448,7 @@ function ensureSignupChooser() {
   modal.innerHTML = `
     <div class="signup-modal" role="dialog" aria-modal="true" aria-labelledby="signupChooserTitle">
       <button class="signup-close" type="button" data-close-signup aria-label="Close">×</button>
-      <span class="section-kicker">${lang === "bn" ? "সাইন আপ" : "Sign Up"}</span>
+      <span class="section-kicker">${lang === "bn" ? "সাইন আপ করুন" : "Sign Up"}</span>
       <h2 id="signupChooserTitle">${lang === "bn" ? "আপনার পছন্দের ব্র্যান্ড বেছে নিন" : "Choose Your Preferred Brand"}</h2>
       <p>${lang === "bn" ? "সব ৫টি ব্র্যান্ডের সাইন আপ লিংক নিচে রাখা হয়েছে। যেটা আপনার জন্য ভালো মনে হয় সেটিতে এগিয়ে যান।" : "All 5 brand signup links are here. Pick the one that fits your preference and continue."}</p>
       <div class="signup-brand-grid">
@@ -474,7 +458,7 @@ function ensureSignupChooser() {
             <strong>${item.brand}</strong>
             <small>${lang === "bn" ? item.best_bn : item.best_en}</small>
             <em>${item.deposit} · 24/7 · ★ ${item.rating}</em>
-            <b>${lang === "bn" ? "সাইন আপ" : "Sign Up"}</b>
+            <b>${lang === "bn" ? "সাইন আপ করুন" : "Sign Up"}</b>
           </a>
         `).join("")}
       </div>
@@ -523,9 +507,9 @@ function ensureFloatingSignup() {
   button.type = "button";
   button.className = "signup-float";
   button.setAttribute("data-open-signup", "");
-  button.setAttribute("data-bn", "সাইন আপ");
+  button.setAttribute("data-bn", "সাইন আপ করুন");
   button.setAttribute("data-en", "Sign Up");
-  button.textContent = currentLang() === "bn" ? "সাইন আপ" : "Sign Up";
+  button.textContent = currentLang() === "bn" ? "সাইন আপ করুন" : "Sign Up";
   document.body.appendChild(button);
 }
 
@@ -547,5 +531,6 @@ function enhanceFooterLogo() {
 renderDynamicContent().then(() => {
   applySignupLinks();
   enhanceFooterLogo();
+  enhanceGamePlayButtons();
   bindSignupChooser();
 });

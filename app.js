@@ -214,7 +214,6 @@ function legacyPromoCardHTML(promo, data) {
         <div class="promo-meta">
           ${brand}
           <span class="promo-tag">${tag}</span>
-          <span class="promo-updated">${promo.updated}</span>
         </div>
         <h3>${title}</h3>
         <p class="promo-summary">${summary}</p>
@@ -245,7 +244,6 @@ function promoCardHTML(promo, data) {
         <div class="promo-meta">
           <span class="promo-brand">${brandName}</span>
           <span class="promo-tag">${tag}</span>
-          <span class="promo-updated">${promo.updated || "Updated recently"}</span>
         </div>
         <h3>${title}</h3>
         <p class="promo-summary">${summary}</p>

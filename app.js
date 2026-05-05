@@ -31,6 +31,29 @@ const COMMON_TRANSLATIONS = [
   ["Quick Scores", "দ্রুত স্কোর"], ["Quick Score", "দ্রুত স্কোর"], ["What to Check in a Review", "রিভিউ পড়ার সময় কী দেখবেন"], ["Quick Action", "দ্রুত এগিয়ে যান"], ["Call to Action", "পরবর্তী ধাপ"]
 ];
 
+COMMON_TRANSLATIONS.push(
+  ["Today’s Focus", "আজকের ফোকাস"],
+  ["Sports focused", "স্পোর্টস-কেন্দ্রিক"],
+  ["Slots + Higher Promos", "স্লট + বেশি প্রমোশন"],
+  ["Payment support", "পেমেন্ট সুবিধা"],
+  ["Bonus clarity", "বোনাসের নিয়ম পরিষ্কার"],
+  ["Mobile usability", "মোবাইলে ব্যবহার সহজ"],
+  ["Use the comparison table.", "তুলনা টেবিল দেখে ব্র্যান্ড বেছে নিন।"],
+  ["Check turnover and expiry.", "টার্নওভার ও মেয়াদ আগে দেখে নিন।"],
+  ["Check cashier methods.", "ক্যাশিয়ার পেজে পেমেন্ট সুবিধা দেখে নিন।"],
+  ["Get fast updates.", "দ্রুত আপডেট পান।"],
+  ["Final method", "চূড়ান্ত পেমেন্ট মেথড"],
+  ["official cashier page", "অফিশিয়াল ক্যাশিয়ার পেজ"],
+  ["minimum deposit", "ন্যূনতম ডিপোজিট"],
+  ["turnover", "টার্নওভার"],
+  ["expiry", "মেয়াদ"],
+  ["withdrawal note", "উত্তোলন নোট"],
+  ["promo", "প্রমোশন"],
+  ["campaign change", "ক্যাম্পেইন পরিবর্তন"],
+  ["payment notice", "পেমেন্ট নোটিস"],
+  ["Telegram Bonus Updates", "Telegram বোনাস আপডেট"]
+);
+
 function translateCommonText(lang) {
   const map = new Map();
   COMMON_TRANSLATIONS.forEach(([en, bn]) => map.set(lang === "bn" ? en : bn, lang === "bn" ? bn : en));
@@ -521,7 +544,7 @@ function enhanceFooterLogo() {
     const logo = document.createElement("a");
     logo.className = "footer-brand-logo";
     logo.href = window.location.pathname.includes("/pages/") ? "../index.html" : "index.html";
-    logo.innerHTML = `<img src="${assetPath("assets/logo.svg")}" alt="BestPlayBD logo"><span><strong>BestPlayBD</strong><small>BD Bonus Compare</small></span>`;
+    logo.innerHTML = `<img src="${assetPath("assets/logo.svg")}" alt="BestPlayBD logo"><span><strong>BestPlayBD</strong><small data-bn="BD বোনাস তুলনা" data-en="BD Bonus Compare">${currentLang() === "bn" ? "BD বোনাস তুলনা" : "BD Bonus Compare"}</small></span>`;
     firstBlock.prepend(logo);
     const duplicateBrand = firstBlock.querySelector(":scope > strong");
     if (duplicateBrand) duplicateBrand.classList.add("footer-text-brand");

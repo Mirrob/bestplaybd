@@ -1,5 +1,14 @@
-const SIGNUP_URL = "https://mcwpromo.com/";
-function getSignupLink(brand) { return SIGNUP_URL; }
+const SIGNUP_URL = "https://facai777.net/bd/en/promotion";
+const PROMO_LINKS = {
+  MCW: "https://facai777.net/bd/en/promotion",
+  BanglaWin: "https://banglawin88.net/bd/en/promotion",
+  Khelaghor: "https://kgbd88.com/bd/en/promotion",
+  Deshislots: "https://deshislots88.net/bd/en/promotion",
+  Banglabet: "https://bbetbd88.com/bd/en/promotion"
+};
+const LIVE_ACTIVITY_URL = "https://script.google.com/macros/s/AKfycbzsF0fC5bSWNZQt8VMl-d8tD3WUHkTOD8XaJtINCxBZ4SEb5nYShxLnHeSc63fBRiXR/exec";
+
+function getSignupLink(brand) { return PROMO_LINKS[brand] || SIGNUP_URL; }
 function applySignupLinks() {
   document.querySelectorAll('[data-signup-brand]').forEach((link) => {
     link.href = getSignupLink(link.dataset.signupBrand || 'MCW');
@@ -350,7 +359,7 @@ async function loadPromoData() {
   const basePath = isPages ? "../data/promos.json" : "data/promos.json";
   const response = await fetch(basePath, { cache: "no-store" });
   if (!response.ok) throw new Error("Unable to load promo data");
-  promoDataCache = await response.json();
+  promoDataCache = normalizePromoData(await response.json());
   return promoDataCache;
 }
 
@@ -367,7 +376,7 @@ function promoLink(promo, data) {
 }
 
 function brandLink(brand, data) {
-  return brand.link || (data.brand_links && data.brand_links[brand.brand]) || data.signup_link || "#";
+  return getSignupLink(brand.brand) || brand.link || (data.brand_links && data.brand_links[brand.brand]) || data.signup_link || "#";
 }
 
 function assetPath(src) {
@@ -376,12 +385,49 @@ function assetPath(src) {
 }
 
 const FALLBACK_PROMOS = [
-  { id: "mcw-first-deposit", brand: "MCW", tag_bn: "স্পোর্টস + ক্যাসিনো", tag_en: "Sports + Casino", title_bn: "MCW ফার্স্ট ডিপোজিট বোনাস", title_en: "MCW First Deposit Bonus", summary_bn: "স্পোর্টস + ক্যাসিনো • ২৪/৭ উত্তোলন", summary_en: "Sports + Casino • 24/7 Withdrawal", updated: "Updated recently", featured: true },
-  { id: "banglawin-slots", brand: "BanglaWin", tag_bn: "স্লট প্রমোশন", tag_en: "Slots Promo", title_bn: "BanglaWin স্লট ও ক্যাসিনো প্রমোশন", title_en: "BanglaWin Slots and Casino Promo", summary_bn: "বেশি প্রমোশন • ৳১০০ থেকে শুরু", summary_en: "Higher promos • ৳100 start", updated: "Updated recently", featured: true },
-  { id: "khelaghor-sports", brand: "Khelaghor", tag_bn: "স্পোর্টস-কেন্দ্রিক", tag_en: "Sports Focus", title_bn: "Khelaghor স্পোর্টস ও ক্যাসিনো অফার", title_en: "Khelaghor Sports and Casino Offer", summary_bn: "ক্রিকেট • ফুটবল • ক্যাসিনো", summary_en: "Cricket • Football • Casino", updated: "Updated recently", featured: true },
-  { id: "deshislots-casino", brand: "Deshislots", tag_bn: "দেশি স্লট", tag_en: "Deshi Slots", title_bn: "Deshislots স্লট, ক্যাসিনো ও ক্যাশব্যাক", title_en: "Deshislots Slots, Casino and Cashback", summary_bn: "স্লট + ক্যাসিনো • দেশি অভিজ্ঞতা", summary_en: "Slots + Casino • Deshi vibes", updated: "Updated recently", featured: true },
-  { id: "banglabet-start", brand: "Banglabet", tag_bn: "নতুনদের জন্য সহজ", tag_en: "Beginner Friendly", title_bn: "Banglabet বোনাস ও সহজ শুরু", title_en: "Banglabet Bonus and Easy Start", summary_bn: "নতুনদের জন্য সহজ • ৳১০০ থেকে শুরু", summary_en: "Beginner friendly • ৳100 start", updated: "Updated recently", featured: true }
+  { id: "mcw-first-deposit", brand: "MCW", categories: ["Sports", "Casino", "Deposit Bonus"], tag_bn: "স্পোর্টস + ক্যাসিনো", tag_en: "Sports + Casino", title_bn: "MCW স্পোর্টস ও ক্যাসিনো বোনাস", title_en: "MCW Sports & Casino Bonus", summary_bn: "স্পোর্টস, লাইভ ক্যাসিনো ও ডিপোজিট প্রোমো এক জায়গায় দেখে বোনাস ক্লেইম করুন।", summary_en: "Check sports, live casino and deposit promos in one place before claiming your bonus.", details_bn: "স্পোর্টস, ক্যাসিনো, ডিপোজিট বোনাস, ক্যাশব্যাক, ফ্রি স্পিন এবং ওয়েলকাম/রিলোড অফার যাচাই করে এগিয়ে যান।", details_en: "Review sports, casino, deposit bonus, cashback, free spin and welcome/reload offers before continuing.", updated: "Updated recently", featured: true, link: PROMO_LINKS.MCW },
+  { id: "banglawin-slots", brand: "BanglaWin", categories: ["Slots", "Casino", "Deposit Bonus"], tag_bn: "স্লট + ক্যাসিনো", tag_en: "Slots + Casino", title_bn: "BanglaWin স্লট ও ক্যাসিনো প্রোমো", title_en: "BanglaWin Slots & Casino Promo", summary_bn: "স্লট, ক্যাসিনো ও বেশি প্রোমোশনের জন্য BanglaWin অফারগুলো দেখুন।", summary_en: "Explore BanglaWin slot, casino and higher promo offers.", details_bn: "স্লট, ক্যাসিনো, ডিপোজিট বোনাস, ফ্রি স্পিন, ক্যাশব্যাক এবং ওয়েলকাম/রিলোড প্রোমো মিলিয়ে দেখুন।", details_en: "Compare slots, casino, deposit bonus, free spin, cashback and welcome/reload promos.", updated: "Updated recently", featured: true, link: PROMO_LINKS.BanglaWin },
+  { id: "khelaghor-sports", brand: "Khelaghor", categories: ["Sports", "Casino", "Deposit Bonus"], tag_bn: "স্পোর্টস + ক্যাসিনো", tag_en: "Sports + Casino", title_bn: "Khelaghor স্পোর্টস ও ক্যাসিনো অফার", title_en: "Khelaghor Sports & Casino Offer", summary_bn: "ক্রিকেট, ফুটবল ও ক্যাসিনো ব্যবহারকারীদের জন্য চলমান অফার দেখুন।", summary_en: "Check active offers for cricket, football and casino users.", details_bn: "স্পোর্টস, ক্যাসিনো, ডিপোজিট বোনাস, ক্যাশব্যাক, ফ্রি স্পিন এবং ওয়েলকাম/রিলোড প্রোমো দেখে নিন।", details_en: "Review sports, casino, deposit bonus, cashback, free spin and welcome/reload promos.", updated: "Updated recently", featured: true, link: PROMO_LINKS.Khelaghor },
+  { id: "deshislots-casino", brand: "Deshislots", categories: ["Slots", "Casino", "Cashback", "Free Spin"], tag_bn: "স্লট + ক্যাশব্যাক", tag_en: "Slots + Cashback", title_bn: "Deshislots স্লট, ক্যাসিনো ও ক্যাশব্যাক", title_en: "Deshislots Slots, Casino & Cashback", summary_bn: "স্লট, ক্যাসিনো, ক্যাশব্যাক ও ফ্রি স্পিন ধরনের প্রোমো দেখুন।", summary_en: "Explore slot, casino, cashback and free spin style promos.", details_bn: "স্লট, ক্যাসিনো, ডিপোজিট বোনাস, ক্যাশব্যাক, ফ্রি স্পিন এবং ওয়েলকাম/রিলোড অফার একসাথে যাচাই করুন।", details_en: "Check slots, casino, deposit bonus, cashback, free spin and welcome/reload offers together.", updated: "Updated recently", featured: true, link: PROMO_LINKS.Deshislots },
+  { id: "banglabet-start", brand: "Banglabet", categories: ["Slots", "Casino", "Deposit Bonus", "Welcome / Reload"], tag_bn: "স্লট + সহজ শুরু", tag_en: "Slots + Easy Start", title_bn: "Banglabet বোনাস ও সহজ শুরু", title_en: "Banglabet Bonus & Easy Start", summary_bn: "নতুন ব্যবহারকারীদের জন্য সহজ শুরু, স্লট ও ক্যাসিনো প্রোমো দেখুন।", summary_en: "Beginner-friendly slot and casino promos for an easy start.", details_bn: "স্লট, ক্যাসিনো, ডিপোজিট বোনাস, ক্যাশব্যাক, ফ্রি স্পিন এবং ওয়েলকাম/রিলোড প্রোমো দেখে শুরু করুন।", details_en: "Start by checking slots, casino, deposit bonus, cashback, free spin and welcome/reload promos.", updated: "Updated recently", featured: true, link: PROMO_LINKS.Banglabet }
 ];
+
+const FALLBACK_BRANDS = [
+  { rank: 1, brand: "MCW", rating: "4.9/5", min_deposit: "৳200", withdraw_bn: "২৪/৭", withdraw_en: "24/7", best_for_bn: "স্পোর্টস + ক্যাসিনো", best_for_en: "Sports + Casino", link: PROMO_LINKS.MCW },
+  { rank: 2, brand: "BanglaWin", rating: "4.8/5", min_deposit: "৳100", withdraw_bn: "২৪/৭", withdraw_en: "24/7", best_for_bn: "স্লট ক্যাসিনো + বেশি প্রমোশন", best_for_en: "Slots Casino + Higher Promos", link: PROMO_LINKS.BanglaWin },
+  { rank: 3, brand: "Khelaghor", rating: "4.7/5", min_deposit: "৳100", withdraw_bn: "২৪/৭", withdraw_en: "24/7", best_for_bn: "স্পোর্টস + ক্যাসিনো", best_for_en: "Sports + Casino", link: PROMO_LINKS.Khelaghor },
+  { rank: 4, brand: "Deshislots", rating: "4.7/5", min_deposit: "৳100", withdraw_bn: "২৪/৭", withdraw_en: "24/7", best_for_bn: "স্লট + ক্যাসিনো + দেশি অভিজ্ঞতা", best_for_en: "Slots + Casino + Deshi vibes", link: PROMO_LINKS.Deshislots },
+  { rank: 5, brand: "Banglabet", rating: "4.7/5", min_deposit: "৳100", withdraw_bn: "২৪/৭", withdraw_en: "24/7", best_for_bn: "স্লট + ক্যাসিনো + নতুনদের জন্য সহজ", best_for_en: "Slots + Casino + Beginner friendly", link: PROMO_LINKS.Banglabet }
+];
+
+function isBrokenText(value) {
+  return typeof value === "string" && /Ã|Â|â|à¦|à§|Û/.test(value);
+}
+
+function normalizePromoData(data = {}) {
+  const sourcePromos = Array.isArray(data.promos) && data.promos.length ? data.promos : [];
+  const promos = FALLBACK_PROMOS.map((fallback) => {
+    const source = sourcePromos.find((item) => item.brand === fallback.brand) || {};
+    const merged = { ...fallback, ...source, link: PROMO_LINKS[fallback.brand] || fallback.link };
+    ["tag_bn", "title_bn", "summary_bn", "details_bn", "cta_bn"].forEach((key) => {
+      if (!merged[key] || isBrokenText(merged[key])) merged[key] = fallback[key] || merged[key];
+    });
+    if (!merged.updated || /Synced from public page/i.test(merged.updated) || isBrokenText(merged.updated)) merged.updated = fallback.updated;
+    if (!Array.isArray(merged.categories) || !merged.categories.length) merged.categories = fallback.categories;
+    merged.featured = true;
+    return merged;
+  });
+  const sourceBrands = Array.isArray(data.brands) && data.brands.length ? data.brands : [];
+  const brands = FALLBACK_BRANDS.map((fallback) => {
+    const source = sourceBrands.find((item) => item.brand === fallback.brand) || {};
+    const merged = { ...fallback, ...source, link: PROMO_LINKS[fallback.brand] || fallback.link };
+    ["min_deposit", "withdraw_bn", "best_for_bn", "bonus_bn"].forEach((key) => {
+      if (!merged[key] || isBrokenText(merged[key])) merged[key] = fallback[key] || fallback.best_for_bn;
+    });
+    return merged;
+  });
+  return { ...data, telegram_link: "https://t.me/bestplaybd_win_big", signup_link: SIGNUP_URL, brand_links: PROMO_LINKS, promos, brands };
+}
 
 function brandSlug(brand) {
   const key = String(brand || "mcw").toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -460,39 +506,108 @@ function legacyPromoCardHTML(promo, data) {
 
 function promoCardHTML(promo, data) {
   const lang = currentLang();
-  const tag = promo[`tag_${lang}`] || promo.tag_en || promo.brand || "Promo";
-  const title = promo[`title_${lang}`] || promo.title_en || `${promo.brand || "Brand"} Promo`;
-  const summary = promo[`summary_${lang}`] || promo.summary_en || "Sports + Casino - 24/7 Withdrawal";
+  const brandName = promo.brand || "MCW";
+  const tag = promo[`tag_${lang}`] || promo.tag_en || promo.type || "Promo";
+  const title = promo[`title_${lang}`] || promo.title_en || `${brandName} Promo`;
+  const summary = promo[`summary_${lang}`] || promo.summary_en || promo.type || "Sports + Casino";
+  const details = promo[`details_${lang}`] || promo.details_en || summary;
   const detailsText = lang === "bn" ? "প্রমোর বিস্তারিত" : "Promo Details";
   const signupText = lang === "bn" ? "বোনাস ক্লেইম করুন" : "Claim Bonus";
-  const brandName = promo.brand || "MCW";
-  const visualChips = promoVisualChips(brandName);
-  const targetLink = getSignupLink(brandName);
-  const detailsHref = window.location.pathname.includes("/pages/") ? "promos.html" : "pages/promos.html";
+  const targetLink = promoLink(promo, data);
   const slug = brandSlug(brandName);
+  const visualChips = promoVisualChips(brandName);
+  const categories = (promo.categories && promo.categories.length ? promo.categories : [promo.type || tag]);
+  const categoryBadges = categories.map((category) => `<span class="promo-category-badge" data-category="${category}">${category}</span>`).join("");
   return `
-    <article class="promo-banner promo-${slug} dynamic-promo-card">
+    <article class="promo-banner promo-${slug} dynamic-promo-card" data-promo-brand="${brandName}" data-promo-categories="${categories.join(" ")}">
       <div class="promo-left">
-        <div class="promo-meta">
-          <span class="promo-brand">${brandName}</span>
-          <span class="promo-tag">${tag}</span>
-        </div>
+        <div class="promo-meta"><span class="promo-brand">${brandName}</span><span class="promo-tag">${tag}</span></div>
         <h3>${title}</h3>
         <p class="promo-summary">${summary}</p>
+        <p class="promo-detail-line">${details}</p>
+        <div class="promo-category-row">${categoryBadges}</div>
         <div class="promo-actions">
           <a class="btn btn-primary" href="${targetLink}" data-signup-brand="${brandName}" target="_blank" rel="nofollow noopener">${signupText}</a>
-          <a class="btn btn-secondary" href="${detailsHref}">${detailsText}</a>
+          <a class="btn btn-secondary" href="${targetLink}" target="_blank" rel="nofollow noopener">${detailsText}</a>
         </div>
       </div>
-      <div class="promo-right" aria-hidden="true">
-        <span class="promo-orb orb-one"></span>
-        <span class="promo-orb orb-two"></span>
-        <span class="promo-chip">${visualChips[0]}</span>
-        <span class="promo-mini-chip promo-mini-one">${visualChips[1]}</span>
-        <span class="promo-mini-chip promo-mini-two">${visualChips[2]}</span>
+      <div class="promo-right" aria-hidden="true"><span class="promo-orb orb-one"></span><span class="promo-orb orb-two"></span><span class="promo-chip">${visualChips[0]}</span><span class="promo-mini-chip promo-mini-one">${visualChips[1]}</span><span class="promo-mini-chip promo-mini-two">${visualChips[2]}</span></div>
+    </article>`;
+}
+
+
+const LIVE_ACTIVITY_FALLBACK = [
+  { brand: "MCW", active: 128, growth: 18 },
+  { brand: "BanglaWin", active: 94, growth: 12 },
+  { brand: "Khelaghor", active: 72, growth: 9 },
+  { brand: "Deshislots", active: 61, growth: 7 },
+  { brand: "Banglabet", active: 58, growth: 6 }
+];
+
+function normalizeLiveActivityPayload(payload) {
+  const rawRows = Array.isArray(payload) ? payload : (payload && (payload.data || payload.rows || payload.brands)) || [];
+  const rows = (Array.isArray(rawRows) ? rawRows : []).map((item) => ({
+    brand: item.brand || item.Brand || item.name || item.Name,
+    active: Number(item.active || item.activeUsers || item.users || item["Active Users"] || item.value || 0),
+    growth: Number(item.growth || item.monthlyGrowth || item.Growth || item["Monthly Growth"] || 0)
+  })).filter((item) => item.brand && item.active);
+  return {
+    rows: rows.length ? rows : LIVE_ACTIVITY_FALLBACK,
+    lastUpdated: (payload && (payload.lastUpdated || payload.updated || payload.date)) || new Date().toLocaleDateString("en-GB")
+  };
+}
+
+function renderLiveActivityWidget(container, payload, compact = false) {
+  const lang = currentLang();
+  const rows = payload.rows || LIVE_ACTIVITY_FALLBACK;
+  const total = rows.reduce((sum, row) => sum + Number(row.active || 0), 0);
+  const activeLabel = lang === "bn" ? "সক্রিয় ব্যবহারকারী" : "active users";
+  const growthLabel = lang === "bn" ? "মাসিক বৃদ্ধি" : "monthly growth";
+  const updatedLabel = lang === "bn" ? "সর্বশেষ আপডেট" : "Last updated";
+  container.innerHTML = `
+    <div class="live-activity-card${compact ? " live-activity-mini" : ""}">
+      <div class="live-activity-summary">
+        <span>${lang === "bn" ? "মোট" : "Total"}</span>
+        <strong>${total}</strong>
+        <small>${activeLabel} · ${updatedLabel}: ${payload.lastUpdated}</small>
       </div>
-    </article>
-  `;
+      <div class="live-activity-rows">
+        ${rows.map((row) => `<div class="live-activity-row"><span>${row.brand}</span><strong>${row.active}</strong><em>+${row.growth}% ${growthLabel}</em></div>`).join("")}
+      </div>
+    </div>`;
+}
+
+async function loadLiveActivity() {
+  const main = document.getElementById("liveActivityWidget");
+  const mini = document.getElementById("liveActivityWidgetMini");
+  if (!main && !mini) return;
+  let payload;
+  try {
+    const response = await fetch(LIVE_ACTIVITY_URL, { cache: "no-store" });
+    if (!response.ok) throw new Error("Live activity request failed");
+    payload = normalizeLiveActivityPayload(await response.json());
+  } catch (error) {
+    payload = { rows: LIVE_ACTIVITY_FALLBACK, lastUpdated: new Date().toLocaleDateString("en-GB") };
+  }
+  if (main) renderLiveActivityWidget(main, payload, false);
+  if (mini) renderLiveActivityWidget(mini, payload, true);
+}
+
+function bindPromoFilters() {
+  const tabs = document.getElementById("promoFilterTabs");
+  const grid = document.getElementById("promoSyncGrid");
+  if (!tabs || !grid || tabs.dataset.bound) return;
+  tabs.dataset.bound = "true";
+  tabs.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-promo-filter]");
+    if (!button) return;
+    const filter = button.dataset.promoFilter;
+    tabs.querySelectorAll("[data-promo-filter]").forEach((item) => item.classList.toggle("active", item === button));
+    grid.querySelectorAll(".dynamic-promo-card").forEach((card) => {
+      const categories = card.dataset.promoCategories || "";
+      card.hidden = filter !== "All" && !categories.includes(filter);
+    });
+  });
 }
 
 async function renderPromosPage() {
@@ -501,8 +616,10 @@ async function renderPromosPage() {
   try {
     const data = await loadPromoData();
     grid.innerHTML = data.promos.map((promo) => promoCardHTML(promo, data)).join("");
+    bindPromoFilters();
   } catch (error) {
     grid.innerHTML = FALLBACK_PROMOS.map((promo) => promoCardHTML(promo, { signup_link: SIGNUP_URL })).join("");
+    bindPromoFilters();
   }
 }
 
@@ -627,12 +744,14 @@ async function renderHomeBrandSections() {
       featuredGrid.innerHTML = data.promos.filter(p => p.featured).slice(0,5).map((promo) => promoCardHTML(promo, data)).join("");
     }
     if (allPromoGrid) allPromoGrid.innerHTML = data.promos.map((promo) => promoCardHTML(promo, data)).join("");
+    bindPromoFilters();
   } catch (error) {
     if (featuredGrid) {
       featuredGrid.classList.add("home-promo-showcase");
       featuredGrid.innerHTML = FALLBACK_PROMOS.map((promo) => promoCardHTML(promo, { signup_link: SIGNUP_URL })).join("");
     }
     if (allPromoGrid) allPromoGrid.innerHTML = FALLBACK_PROMOS.map((promo) => promoCardHTML(promo, { signup_link: SIGNUP_URL })).join("");
+    bindPromoFilters();
     if (brandGrid && !brandGrid.children.length) brandGrid.innerHTML = `<div class="card empty-state"><h3>Unable to load data</h3></div>`;
   }
 }
@@ -673,7 +792,8 @@ async function renderDynamicContent() {
     renderPromosPage(),
     renderPromoDetailPage(),
     hydrateTelegramLinks(),
-    renderHomeBrandSections()
+    renderHomeBrandSections(),
+    loadLiveActivity()
   ]);
   enhanceFooterLogo();
   enhanceGamePlayButtons();
@@ -683,7 +803,7 @@ async function renderDynamicContent() {
 function signupBrands() {
   return [
     { brand: "MCW", best_bn: "স্পোর্টস + ক্যাসিনো", best_en: "Sports + Casino", deposit: "৳200", rating: "4.9/5" },
-    { brand: "BanglaWin", best_bn: "স্লট + বেশি প্রমোশন", best_en: "Slots + Higher Promos", deposit: "৳100", rating: "4.8/5" },
+    { brand: "BanglaWin", best_bn: "স্লট + বেশি প্রোমোশন", best_en: "Slots + Higher Promos", deposit: "৳100", rating: "4.8/5" },
     { brand: "Khelaghor", best_bn: "স্পোর্টস + ক্যাসিনো", best_en: "Sports + Casino", deposit: "৳100", rating: "4.7/5" },
     { brand: "Deshislots", best_bn: "স্লট + দেশি অভিজ্ঞতা", best_en: "Slots + Deshi Vibes", deposit: "৳100", rating: "4.7/5" },
     { brand: "Banglabet", best_bn: "নতুনদের জন্য সহজ", best_en: "Beginner Friendly", deposit: "৳100", rating: "4.7/5" }
@@ -698,25 +818,23 @@ function ensureSignupChooser() {
   modal.id = "signupChooser";
   modal.className = "signup-modal-backdrop";
   modal.hidden = true;
-  modal.innerHTML = `
-    <div class="signup-modal" role="dialog" aria-modal="true" aria-labelledby="signupChooserTitle">
-      <button class="signup-close" type="button" data-close-signup aria-label="Close">×</button>
-      <span class="section-kicker">${lang === "bn" ? "সাইন আপ করুন" : "Sign Up"}</span>
-      <h2 id="signupChooserTitle">${lang === "bn" ? "আপনার পছন্দের ব্র্যান্ড বেছে নিন" : "Choose Your Preferred Brand"}</h2>
-      <p>${lang === "bn" ? "সব ৫টি ব্র্যান্ডের সাইন আপ লিংক নিচে রাখা হয়েছে। যেটা আপনার জন্য ভালো মনে হয় সেটিতে এগিয়ে যান।" : "All 5 brand signup links are here. Pick the one that fits your preference and continue."}</p>
-      <div class="signup-brand-grid">
-        ${brands.map((item, index) => `
-          <a class="signup-brand-option" href="${getSignupLink(item.brand)}" data-signup-brand="${item.brand}" target="_blank" rel="nofollow noopener">
-            <span class="rank-badge">#${index + 1}</span>
-            <strong>${item.brand}</strong>
-            <small>${lang === "bn" ? item.best_bn : item.best_en}</small>
-            <em>${item.deposit} · 24/7 · ★ ${item.rating}</em>
-            <b>${lang === "bn" ? "সাইন আপ করুন" : "Sign Up"}</b>
-          </a>
-        `).join("")}
-      </div>
-    </div>
-  `;
+  const title = lang === "bn" ? "আপনার পছন্দের ব্র্যান্ড বেছে নিন" : "Choose Your Preferred Brand";
+  const intro = lang === "bn" ? "সব ৫টি ব্র্যান্ডের সাইন আপ লিংক নিচে রাখা হয়েছে। যেটা আপনার জন্য ভালো মনে হয় সেটিতে এগিয়ে যান।" : "All 5 brand signup links are here. Pick the one that fits your preference and continue.";
+  const label = lang === "bn" ? "সাইন আপ করুন" : "Sign Up";
+  modal.innerHTML = '<div class="signup-modal" role="dialog" aria-modal="true" aria-labelledby="signupChooserTitle">' +
+    '<button class="signup-close" type="button" data-close-signup aria-label="Close">×</button>' +
+    '<span class="section-kicker">' + label + '</span>' +
+    '<h2 id="signupChooserTitle">' + title + '</h2>' +
+    '<p>' + intro + '</p>' +
+    '<div class="signup-brand-grid">' +
+    brands.map((item, index) => '<a class="signup-brand-option" href="' + getSignupLink(item.brand) + '" data-signup-brand="' + item.brand + '" target="_blank" rel="nofollow noopener">' +
+      '<span class="rank-badge">#' + (index + 1) + '</span>' +
+      '<strong>' + item.brand + '</strong>' +
+      '<small>' + (lang === "bn" ? item.best_bn : item.best_en) + '</small>' +
+      '<em>' + item.deposit + ' · 24/7 · ★ ' + item.rating + '</em>' +
+      '<b>' + label + '</b>' +
+    '</a>').join("") +
+    '</div></div>';
   document.body.appendChild(modal);
 }
 

@@ -1022,3 +1022,81 @@ body {
     white-space: nowrap;
   }
 }
+
+/* Small add-ons: footer social buttons and homepage top bonus card. */
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.footer-social-links {
+  display: inline-flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.footer-social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  font-weight: 900;
+}
+
+.footer-social-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.footer-social-btn.facebook {
+  color: #9ec7ff;
+}
+
+.footer-social-btn.tiktok {
+  color: #fff;
+}
+
+.today-top-bonus {
+  padding: 34px 0;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255,255,255,.018);
+}
+
+.today-top-bonus-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.today-top-bonus-card h2 {
+  margin: 6px 0 4px;
+  font-size: clamp(1.45rem,2.5vw,2.1rem);
+}
+
+.today-top-bonus-card p {
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .today-top-bonus-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .today-top-bonus-card .btn {
+    width: 100%;
+  }
+
+  .footer-social {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

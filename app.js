@@ -1,10 +1,10 @@
-const SIGNUP_URL = "https://facai777.net/bd/en/promotion";
+const SIGNUP_URL = "https://mcw85229381aff.com/af/6NXP2ACy/join";
 const PROMO_LINKS = {
-  MCW: "https://facai777.net/bd/en/promotion",
-  BanglaWin: "https://banglawin88.net/bd/en/promotion",
-  Khelaghor: "https://kgbd88.com/bd/en/promotion",
-  Deshislots: "https://deshislots88.net/bd/en/promotion",
-  Banglabet: "https://bbetbd88.com/bd/en/promotion"
+  MCW: "https://mcw85229381aff.com/af/6NXP2ACy/join",
+  BanglaWin: "https://bnwnaff332244.com/af/OsPNbRP6/join",
+  Khelaghor: "https://kg899992221aff.com/af/jsQJzNyn/join",
+  Deshislots: "https://desh8slotaff888.com/af/AT5sNJes/join",
+  Banglabet: "https://bbaff922988182.com/af/rXvgY044/join"
 };
 const LIVE_ACTIVITY_URL = "https://script.google.com/macros/s/AKfycbzsF0fC5bSWNZQt8VMl-d8tD3WUHkTOD8XaJtINCxBZ4SEb5nYShxLnHeSc63fBRiXR/exec";
 

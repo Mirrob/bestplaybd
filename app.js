@@ -295,9 +295,60 @@ COMMON_TRANSLATIONS.push(
   ["24/7 withdrawal", "২৪/৭ উত্তোলন"]
 );
 
+COMMON_TRANSLATIONS.push(
+  ["Top Brands", "সেরা ব্র্যান্ড"],
+  ["Top 5 Recommended Brands", "সেরা ৫টি সুপারিশকৃত ব্র্যান্ড"],
+  ["Recommended Brands", "সুপারিশকৃত ব্র্যান্ড"],
+  ["Best Brand", "সেরা ব্র্যান্ড"],
+  ["Best Brands", "সেরা ব্র্যান্ড"],
+  ["Quick links", "দ্রুত লিংক"],
+  ["Compare Best Bonuses", "সেরা বোনাস দেখুন"],
+  ["View top brands", "সেরা ব্র্যান্ড দেখুন"],
+  ["View Top Brands", "সেরা ব্র্যান্ড দেখুন"],
+  ["View top brands", "সেরা ব্র্যান্ড দেখুন"],
+  ["24/7 withdrawal", "২৪/৭ উত্তোলন"],
+  ["24/7 withdrawal support", "২৪/৭ উত্তোলন সুবিধা"],
+  ["Minimum deposit BDT 200", "ন্যূনতম ডিপোজিট ৳২০০"],
+  ["Minimum deposit BDT 100", "ন্যূনতম ডিপোজিট ৳১০০"],
+  ["Slots Casino + Higher Promos", "স্লট ক্যাসিনো + বেশি প্রমোশন"],
+  ["Slots + Casino + Deshi Vibes", "স্লট + ক্যাসিনো + দেশি অভিজ্ঞতা"],
+  ["Sports Focused", "স্পোর্টস-কেন্দ্রিক"],
+  ["Beginner Friendly", "নতুনদের জন্য সহজ"],
+  ["Turnover / Wagering", "টার্নওভার / ওয়েজারিং"],
+  ["Expiry Date", "মেয়াদ শেষের তারিখ"],
+  ["Payment Method", "পেমেন্ট পদ্ধতি"]
+);
+
 function translateCommonText(lang) {
   const map = new Map();
   COMMON_TRANSLATIONS.forEach(([en, bn]) => map.set(lang === "bn" ? en : bn, lang === "bn" ? bn : en));
+  const replacements = Array.from(map.entries()).sort((a, b) => b[0].length - a[0].length);
+  const asciiWord = /[A-Za-z0-9]/;
+  const replaceStandalone = (text, from, to) => {
+    let output = "";
+    let index = 0;
+    while (index < text.length) {
+      const foundAt = text.indexOf(from, index);
+      if (foundAt === -1) {
+        output += text.slice(index);
+        break;
+      }
+      const before = text[foundAt - 1] || "";
+      const after = text[foundAt + from.length] || "";
+      const startsAscii = asciiWord.test(from[0] || "");
+      const endsAscii = asciiWord.test(from[from.length - 1] || "");
+      const hasWordBefore = startsAscii && asciiWord.test(before);
+      const hasWordAfter = endsAscii && asciiWord.test(after);
+      output += text.slice(index, foundAt);
+      if (!hasWordBefore && !hasWordAfter) {
+        output += to;
+      } else {
+        output += from;
+      }
+      index = foundAt + from.length;
+    }
+    return output;
+  };
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
     acceptNode(node) {
       if (!node.parentElement || ["SCRIPT", "STYLE"].includes(node.parentElement.tagName)) return NodeFilter.FILTER_REJECT;
@@ -309,7 +360,15 @@ function translateCommonText(lang) {
   nodes.forEach((node) => {
     const raw = node.nodeValue;
     const trimmed = raw.trim();
-    if (map.has(trimmed)) node.nodeValue = raw.replace(trimmed, map.get(trimmed));
+    if (map.has(trimmed)) {
+      node.nodeValue = raw.replace(trimmed, map.get(trimmed));
+      return;
+    }
+    let translated = raw;
+    replacements.forEach(([from, to]) => {
+      if (from && translated.includes(from)) translated = replaceStandalone(translated, from, to);
+    });
+    node.nodeValue = translated;
   });
 }
 
@@ -320,6 +379,52 @@ const langButtons = document.querySelectorAll(".lang-btn");
 if (menuToggle && mainNav) {
   menuToggle.addEventListener("click", () => {
     mainNav.classList.toggle("show");
+  });
+}
+
+const BN_DIGITS = "০১২৩৪৫৬৭৮৯";
+const EN_DIGITS = "0123456789";
+
+function toBanglaDigits(value) {
+  return String(value).replace(/[0-9]/g, (digit) => BN_DIGITS[Number(digit)]);
+}
+
+function toEnglishDigits(value) {
+  return String(value).replace(/[০-৯]/g, (digit) => EN_DIGITS[BN_DIGITS.indexOf(digit)]);
+}
+
+function formatVisibleNumber(value, lang) {
+  return lang === "bn" ? toBanglaDigits(value) : toEnglishDigits(value);
+}
+
+function formatMoney(value, lang) {
+  const raw = String(value || "৳100").replace(/BDT\s*/gi, "৳");
+  if (lang === "bn") return toBanglaDigits(raw);
+  return toEnglishDigits(raw).replace(/৳\s*/g, "BDT ");
+}
+
+function formatRating(value, lang) {
+  return formatVisibleNumber(value || "4.5/5", lang);
+}
+
+function normalizeVisibleNumbers(lang) {
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      if (!node.parentElement || ["SCRIPT", "STYLE", "NOSCRIPT"].includes(node.parentElement.tagName)) return NodeFilter.FILTER_REJECT;
+      return node.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    }
+  });
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach((node) => {
+    let text = node.nodeValue;
+    if (lang === "bn") {
+      text = text.replace(/BDT\s*/gi, "৳");
+      node.nodeValue = toBanglaDigits(text);
+    } else {
+      text = toEnglishDigits(text);
+      node.nodeValue = text.replace(/৳\s*/g, "BDT ");
+    }
   });
 }
 
@@ -335,6 +440,7 @@ function applyLanguage(lang) {
   });
 
   translateCommonText(lang);
+  normalizeVisibleNumbers(lang);
 
   localStorage.setItem("bestplaybd_lang", lang);
   const signupChooser = document.getElementById("signupChooser");
@@ -463,8 +569,8 @@ function walletLogosHTML() {
     { cls: "wallet-tap", logo: "assets/wallets/tap.svg", label: "tap", bn: "ট্যাপ" }
   ];
   return wallets.map((wallet) => {
-    const name = currentLang() === "bn" ? wallet.bn : wallet.label;
-    return "<span class=\"wallet-logo " + wallet.cls + "\" title=\"" + wallet.label + "\"><img class=\"wallet-img\" src=\"" + assetPath(wallet.logo) + "\" alt=\"" + wallet.label + " logo\"><span class=\"wallet-name\" data-bn=\"" + wallet.bn + "\" data-en=\"" + wallet.label + "\">" + name + "</span></span>";
+    const name = wallet.label;
+    return "<span class=\"wallet-logo " + wallet.cls + "\" title=\"" + wallet.label + "\"><img class=\"wallet-img\" src=\"" + assetPath(wallet.logo) + "\" alt=\"" + wallet.label + " logo\"><span class=\"wallet-name\" data-bn=\"" + wallet.label + "\" data-en=\"" + wallet.label + "\">" + name + "</span></span>";
   }).join("");
 }
 
@@ -564,15 +670,17 @@ function renderLiveActivityWidget(container, payload, compact = false) {
   const activeLabel = lang === "bn" ? "সক্রিয় ব্যবহারকারী" : "active users";
   const growthLabel = lang === "bn" ? "মাসিক বৃদ্ধি" : "monthly growth";
   const updatedLabel = lang === "bn" ? "সর্বশেষ আপডেট" : "Last updated";
+  const totalText = formatVisibleNumber(total, lang);
+  const updatedText = formatVisibleNumber(payload.lastUpdated, lang);
   container.innerHTML = `
     <div class="live-activity-card${compact ? " live-activity-mini" : ""}">
       <div class="live-activity-summary">
         <span>${lang === "bn" ? "মোট" : "Total"}</span>
-        <strong>${total}</strong>
-        <small>${activeLabel} · ${updatedLabel}: ${payload.lastUpdated}</small>
+        <strong>${totalText}</strong>
+        <small>${activeLabel} · ${updatedLabel}: ${updatedText}</small>
       </div>
       <div class="live-activity-rows">
-        ${rows.map((row) => `<div class="live-activity-row"><span>${row.brand}</span><strong>${row.active}</strong><em>+${row.growth}% ${growthLabel}</em></div>`).join("")}
+        ${rows.map((row) => `<div class="live-activity-row"><span>${row.brand}</span><strong>${formatVisibleNumber(row.active, lang)}</strong><em>+${formatVisibleNumber(row.growth, lang)}% ${growthLabel}</em></div>`).join("")}
       </div>
     </div>`;
 }
@@ -718,26 +826,35 @@ async function renderHomeBrandSections() {
     if (brandGrid) {
       brandGrid.innerHTML = brands.map((brand) => {
         const reviewPath = window.location.pathname.includes("/pages/") ? (brand.brand === "MCW" ? "mcw-review.html" : brand.brand === "BanglaWin" ? "banglawin-review.html" : "best-betting-site-bd.html") : (brand.brand === "MCW" ? "pages/mcw-review.html" : brand.brand === "BanglaWin" ? "pages/banglawin-review.html" : "pages/best-betting-site-bd.html");
+        const deposit = formatMoney(brand.min_deposit || "৳100", lang);
+        const withdraw = formatVisibleNumber(brand[`withdraw_${lang}`] || brand.withdraw_en || "24/7", lang);
+        const rating = formatRating(brand.rating || "4.5/5", lang);
+        const rank = formatVisibleNumber(brand.rank || "", lang);
         return "<article class=\"brand-card\">" +
-          "<div class=\"brand-card-top\"><span class=\"rank-badge\">#" + (brand.rank || "") + "</span><span class=\"rating-line\">★ " + (brand.rating || "4.5/5") + "</span></div>" +
+          "<div class=\"brand-card-top\"><span class=\"rank-badge\">#" + rank + "</span><span class=\"rating-line\">★ " + rating + "</span></div>" +
           "<h3>" + brand.brand + "</h3>" +
           "<p>" + (brand[`best_for_${lang}`] || brand.best_for_en || "Recommended") + "</p>" +
-          "<div class=\"brand-facts\"><span>" + (brand.min_deposit || "৳100") + "</span><span>" + (brand[`withdraw_${lang}`] || brand.withdraw_en || "24/7") + "</span><span class=\"brand-payment-pill\">bKash · Nagad · Rocket · Upay · Bank · USDT</span></div>" +
+          "<div class=\"brand-facts\"><span>" + deposit + "</span><span>" + withdraw + "</span><span class=\"brand-payment-pill\">bKash · Nagad · Rocket · Upay · Bank · USDT</span></div>" +
           "<div class=\"card-actions\"><a class=\"btn btn-primary\" href=\"" + brandLink(brand, data) + "\" data-signup-brand=\"" + brand.brand + "\" target=\"_blank\" rel=\"nofollow noopener\">" + (lang === "bn" ? "সাইন আপ করুন" : "Sign Up") + "</a><a class=\"btn btn-secondary\" href=\"" + reviewPath + "\">" + (lang === "bn" ? "রিভিউ" : "Review") + "</a></div>" +
         "</article>";
       }).join("");
     }
     if (tableBody) {
-      tableBody.innerHTML = brands.map((brand) =>
+      tableBody.innerHTML = brands.map((brand) => {
+        const deposit = formatMoney(brand.min_deposit || "৳100", lang);
+        const withdraw = formatVisibleNumber(brand[`withdraw_${lang}`] || brand.withdraw_en || "24/7", lang);
+        const rating = formatRating(brand.rating || "4.5/5", lang);
+        return (
         "<tr>" +
-          "<td data-label=\"Brand\"><strong>" + brand.brand + "</strong><span>" + (brand[`best_for_${lang}`] || brand.best_for_en || "Recommended") + "</span></td>" +
-          "<td data-label=\"Min Deposit\">" + (brand.min_deposit || "৳100") + "</td>" +
-          "<td data-label=\"Withdraw\">" + (brand[`withdraw_${lang}`] || brand.withdraw_en || "24/7") + "</td>" +
-          "<td data-label=\"Payment\"><span class=\"payment-inline\">bKash · Nagad · Rocket · Upay · Bank · USDT</span></td>" +
-          "<td data-label=\"Rating\">★ " + (brand.rating || "4.5/5") + "</td>" +
-          "<td data-label=\"Action\"><a class=\"mini-cta\" href=\"" + brandLink(brand, data) + "\" data-signup-brand=\"" + brand.brand + "\" target=\"_blank\" rel=\"nofollow noopener\">" + (lang === "bn" ? "সাইন আপ করুন" : "Sign Up") + "</a></td>" +
+          "<td data-label=\"" + (lang === "bn" ? "ব্র্যান্ড" : "Brand") + "\"><strong>" + brand.brand + "</strong><span>" + (brand[`best_for_${lang}`] || brand.best_for_en || "Recommended") + "</span></td>" +
+          "<td data-label=\"" + (lang === "bn" ? "ন্যূনতম ডিপোজিট" : "Min Deposit") + "\">" + deposit + "</td>" +
+          "<td data-label=\"" + (lang === "bn" ? "উত্তোলন" : "Withdraw") + "\">" + withdraw + "</td>" +
+          "<td data-label=\"" + (lang === "bn" ? "পেমেন্ট" : "Payment") + "\"><span class=\"payment-inline\">bKash · Nagad · Rocket · Upay · Bank · USDT</span></td>" +
+          "<td data-label=\"" + (lang === "bn" ? "রেটিং" : "Rating") + "\">★ " + rating + "</td>" +
+          "<td data-label=\"" + (lang === "bn" ? "অ্যাকশন" : "Action") + "\"><a class=\"mini-cta\" href=\"" + brandLink(brand, data) + "\" data-signup-brand=\"" + brand.brand + "\" target=\"_blank\" rel=\"nofollow noopener\">" + (lang === "bn" ? "সাইন আপ করুন" : "Sign Up") + "</a></td>" +
         "</tr>"
-      ).join("");
+        );
+      }).join("");
     }
     if (featuredGrid) {
       featuredGrid.classList.add("home-promo-showcase");
@@ -797,6 +914,7 @@ async function renderDynamicContent() {
   ]);
   enhanceFooterLogo();
   enhanceGamePlayButtons();
+  applyLanguage(currentLang());
   bindSignupChooser();
 }
 
@@ -828,10 +946,10 @@ function ensureSignupChooser() {
     '<p>' + intro + '</p>' +
     '<div class="signup-brand-grid">' +
     brands.map((item, index) => '<a class="signup-brand-option" href="' + getSignupLink(item.brand) + '" data-signup-brand="' + item.brand + '" target="_blank" rel="nofollow noopener">' +
-      '<span class="rank-badge">#' + (index + 1) + '</span>' +
+      '<span class="rank-badge">#' + formatVisibleNumber(index + 1, lang) + '</span>' +
       '<strong>' + item.brand + '</strong>' +
       '<small>' + (lang === "bn" ? item.best_bn : item.best_en) + '</small>' +
-      '<em>' + item.deposit + ' · 24/7 · ★ ' + item.rating + '</em>' +
+      '<em>' + formatMoney(item.deposit, lang) + ' · ' + formatVisibleNumber('24/7', lang) + ' · ★ ' + formatRating(item.rating, lang) + '</em>' +
       '<b>' + label + '</b>' +
     '</a>').join("") +
     '</div></div>';

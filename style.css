@@ -1031,6 +1031,28 @@ body {
   flex-wrap: wrap;
 }
 
+.footer-social-panel {
+  width: min(520px, 100%);
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255,255,255,.045);
+}
+
+.footer-social-copy {
+  display: grid;
+  gap: 3px;
+}
+
+.footer-social-copy strong {
+  color: #fff;
+}
+
+.footer-social-copy span {
+  color: var(--muted);
+  font-size: .92rem;
+}
+
 .footer-social-links {
   display: inline-flex;
   gap: 8px;
@@ -1061,6 +1083,72 @@ body {
 
 .footer-social-btn.tiktok {
   color: #fff;
+}
+
+.telegram-popup {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 999;
+  width: min(360px, calc(100vw - 32px));
+  padding: 18px;
+  border: 1px solid rgba(246,201,69,.22);
+  border-radius: 18px;
+  background: linear-gradient(160deg, rgba(25,45,82,.98), rgba(8,17,37,.98));
+  box-shadow: 0 24px 70px rgba(0,0,0,.44);
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(18px);
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+.telegram-popup.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.telegram-popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.telegram-popup-mark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+  background: #2f86ff;
+  color: #fff;
+  font-weight: 950;
+}
+
+.telegram-popup h3 {
+  margin: 0 34px 8px 0;
+  font-size: 1.18rem;
+}
+
+.telegram-popup p {
+  margin: 0 0 14px;
+  color: var(--muted);
+}
+
+.telegram-popup .btn {
+  width: 100%;
+  justify-content: center;
 }
 
 .today-top-bonus {
@@ -1098,5 +1186,15 @@ body {
   .footer-social {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .telegram-popup {
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+    border-radius: 18px 18px 0 0;
   }
 }

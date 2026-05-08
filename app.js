@@ -1017,9 +1017,37 @@ function enhanceFooterLogo() {
   });
 }
 
+function initTelegramPopup() {
+  const storageKey = "bestplaybd_telegram_popup_seen";
+  if (sessionStorage.getItem(storageKey)) return;
+
+  window.setTimeout(() => {
+    if (sessionStorage.getItem(storageKey) || document.querySelector(".telegram-popup")) return;
+    const popup = document.createElement("aside");
+    popup.className = "telegram-popup";
+    popup.setAttribute("role", "dialog");
+    popup.setAttribute("aria-live", "polite");
+    popup.innerHTML =
+      '<button class="telegram-popup-close" type="button" aria-label="Close">×</button>' +
+      '<div class="telegram-popup-mark">TG</div>' +
+      '<h3 data-bn="নতুন বোনাস আপডেট চান?" data-en="Want fast bonus updates?">নতুন বোনাস আপডেট চান?</h3>' +
+      '<p data-bn="Telegram-এ যোগ দিন, নতুন প্রোমো ও পেমেন্ট আপডেট দ্রুত পান।" data-en="Join Telegram for quick promo and payment updates.">Telegram-এ যোগ দিন, নতুন প্রোমো ও পেমেন্ট আপডেট দ্রুত পান।</p>' +
+      '<a class="btn btn-primary" href="https://t.me/bestplaybd_win_big" target="_blank" rel="noopener noreferrer" data-bn="Telegram join করুন" data-en="Join Telegram">Telegram join করুন</a>';
+    document.body.appendChild(popup);
+    applyLanguage(currentLang());
+    popup.querySelector(".telegram-popup-close").addEventListener("click", () => {
+      popup.classList.remove("show");
+      window.setTimeout(() => popup.remove(), 180);
+    });
+    sessionStorage.setItem(storageKey, "true");
+    requestAnimationFrame(() => popup.classList.add("show"));
+  }, 15000);
+}
+
 renderDynamicContent().then(() => {
   applySignupLinks();
   enhanceFooterLogo();
   enhanceGamePlayButtons();
   bindSignupChooser();
+  initTelegramPopup();
 });
